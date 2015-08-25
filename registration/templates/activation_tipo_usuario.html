@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}
+Registro
+{% endblock %}
+
+{% block content %}
+
+        <div class="container">
+            <form method="post" action="." class="form-register" role="form">{% csrf_token %}
+                <h2 class="form-register-heading"></h2>
+                {{form.as_p}}
+             <!-- Form Name -->     
+
+                <button class="btn btn-default btn-block" type="submit">Crear una cuenta</button>
+          
+            </form>
+        </div>
+
+        <script type="text/javascript" src="{{STATIC_URL}}js/jquery.min.js"></script>
+        <script type="text/javascript" src="{{STATIC_URL}}js/bootstrap.min.js"></script>
+
+    </body>
+</html>
+{% endblock %}

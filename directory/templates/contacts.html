@@ -1,0 +1,246 @@
+{% extends "admin.html" %}
+
+{% block title %}
+Directorio
+{% endblock %}
+
+{% block content %}
+{% load widget_tweaks %}
+{% load static from staticfiles %}
+<!-- Right side column. Contains the navbar and content of the page -->
+<aside class="right-side">                
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Directorio
+      <small>contactos</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-arrow-circle-right"></i> Directorio</a></li>
+      <li class="active">contactos</li>
+    </ol>
+  </section>
+   <!-- Main content -->
+  <section class="content">
+              {% if messages %}
+                    {% for message in messages %}
+                   
+                    <div {% if message.tags == "success" %} class="alert alert-success alert-dismissable" {% endif %}>
+                                        <i class="fa fa-thumbs-o-up"></i>
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                        </b> {{message}}
+                                    </div>
+                    {% endfor %}
+                    {% endif %}
+
+  <br>
+  <div class="row">
+  <div class="col-md-3">
+  <ul class="nav nav-pills">
+  <li class="active"><a href={% url 'search_directory_contacts' %}>Contactos</a></li>
+  <li><a href={% url 'search_directory_all' %}>Todos</a></li>
+  </ul>
+  </div>
+  </div>
+<!--
+<div class="row">
+<div class="col-md-3">
+<form enctype="multipart/form-data" method="POST" action=".">{% csrf_token %} 
+
+ {% csrf_token %}
+   <div class="form-group">                                  
+        <label>Nombres:</label>
+         {{form.first_name}}
+    </div>
+    <div class="form-group">
+    <label>Apellidos:</label>
+          {{form.last_name}}
+    </div>
+<div class="box-footer">
+                                        <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
+                                        </div>
+ 
+ </form>
+ </div>
+</div>
+-->
+<br>
+    <!-- title row -->
+    <div class="row"> 
+      <br>  
+
+      <div class="col-md-5">
+      {% if list_to_user_contact %}
+      {% for list in list_to_user_contact %}
+        <div class="alert alert-warning alert-dismissable">
+                                        <i class="fa fa-warning"></i>
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                        </b>{{list.from_user.first_name}} {{list.from_user.last_name}} ha solicitado ser un contacto.
+                                          {% if list.from_user.registrationprofile.tipo_usuario == 'medico' %}
+                                              <a href={% url 'specialist_profile' list.from_user.id %}><h3><p class="label label-success"><i class="fa fa-eye"></i> Ver perfil</p></h3></a>
+                                                {% else %}
+                                              <a href={% url 'patient_profile_public' list.from_user.id %}><h3><p class="label label-success"><i class="fa fa-eye"></i> Ver perfil</p></h3></a>
+                                                {% endif %}
+                                              <a href={% url 'confirmed_contact' list.from_user.id 'Confirmed' %}><p class="label label-primary"><i class="fa fa-check-circle"></i> confirmar solicitud</p></a>
+                                              <a href={% url 'confirmed_contact' list.from_user.id 'Rejected' %}><p class="label label-primary"><i class="fa fa-times-circle"></i> rechazar solicitud</p></a>
+                            </div>
+      {% endfor %}
+      {% endif %}
+       
+      {% if contacts != 'not' %}
+        <div class="scroll-area" data-spy="scroll" data-target="#myNavbar" data-offset="0">
+<br>
+      
+<div class="box-body table-responsive">
+                                    <div id="example2_wrapper" class="dataTables_wrapper form-inline" role="grid"><div class="row"><div class="col-xs-6"></div><div class="col-xs-6"></div></div>
+                                      <table aria-describedby="example2_info" id="example2" class="table table-bordered table-hover dataTable">
+                                   
+                                        
+                                        <tbody aria-relevant="all" aria-live="polite" role="alert">
+                                         {% for unconfirmed in unconfirmed %}
+                                       
+                                        
+                                            <tr class="odd">
+                                                <td class="  sorting_1"> 
+                                                <div class="user-panel">
+                        <div class="pull-left image">
+                          
+                              <img src={{unconfirmed.profileuser.image.url}} class="img-circle" alt="User Image" />
+                          
+                         </div>
+                        <div class="pull-left info">
+                            <p>{{unconfirmed.last_name}}, {{unconfirmed.first_name}}</p>
+                            {% if unconfirmed.registrationprofile.tipo_usuario == 'medico' %}
+                            <p class="label label-info">Especialista</p>
+                            <p class="label label-success">{{unconfirmed.profileuser.medical_specialty.name}}</p>
+                            {% else %}
+                            <p class="label label-info">Paciente</p>
+                            {% endif %}
+                            <div class="alert alert-info alert-dismissable">
+                                        <i class="fa fa-warning"></i>
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                        </b> Solicitud de contacto aún sin confirmar
+                            </div>
+                                                      
+                        </div>
+                    </div>
+                                                {% if unconfirmed.registrationprofile.tipo_usuario == 'medico' %}
+                                                <td class=" "><a href={% url 'specialist_profile' unconfirmed.id %}><h3><p class="label label-success"><i class="fa fa-eye"></i> Ver perfil</p></h3></a></td>
+                                                {% else %}
+                                                <td class=" "><a href={% url 'patient_profile_public' unconfirmed.id %}><h3><p class="label label-success"><i class="fa fa-eye"></i> Ver perfil</p></h3></a></td>
+                                                {% endif %}
+                                                 
+                                            </tr>
+                                           
+                                    
+                                         {% endfor %}
+                            
+                                        {% for rejected in rejected %}
+                                       
+                                        
+                                            <tr class="odd">
+                                                <td class="  sorting_1"> 
+                                                <div class="user-panel">
+                        <div class="pull-left image">
+                          
+                              <img src={{rejected.profileuser.image.url}} class="img-circle" alt="User Image" />
+                          
+                         </div>
+                        <div class="pull-left info">
+                            <p>{{rejected.last_name}}, {{rejected.first_name}}</p>
+                            {% if rejected.registrationprofile.tipo_usuario == 'medico' %}
+                            <p class="label label-info">Especialista</p>
+                            <p class="label label-success">{{rejected.profileuser.medical_specialty.name}}</p>
+                            {% else %}
+                            <p class="label label-info">Paciente</p>
+                            {% endif %}
+                            <div class="alert alert-warning alert-dismissable">
+                                        <i class="fa fa-warning"></i>
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                        </b> Solicitud de contacto rechazada por el usuario
+                            </div>
+                                                      
+                        </div>
+                    </div>
+                                                {% if rejected.registrationprofile.tipo_usuario == 'medico' %}
+                                                <td class=" "><a href={% url 'specialist_profile' rejected.id %}><h3><p class="label label-success"><i class="fa fa-eye"></i> Ver perfil</p></h3></a></td>
+                                                {% else %}
+                                                <td class=" "><a href={% url 'patient_profile_public' rejected.id %}><h3><p class="label label-success"><i class="fa fa-eye"></i> Ver perfil</p></h3></a></td>
+                                                {% endif %}
+                                                 
+                                            </tr>
+                                           
+                                    
+                                         {% endfor %}  
+
+                                                            {% for confirmed in confirmed %}<!--para confirmados -->
+                                       
+                                        
+                                            <tr class="odd">
+                                                <td class="  sorting_1"> 
+                                                <div class="user-panel">
+                        <div class="pull-left image">
+                          
+                              <img src={{confirmed.profileuser.image.url}} class="img-circle" alt="User Image" />
+                          
+                         </div>
+                        <div class="pull-left info">
+                            <p>{{confirmed.last_name}}, {{confirmed.first_name}}</p>
+                            <a href={% url 'postman_write' confirmed.username %}> <button class="btn btn-primary "><i class="fa fa-envelope"></i> Enviar mensaje</button></a>
+                            {% if confirmed.registrationprofile.tipo_usuario == 'medico' %}
+                            <p class="label label-info">Especialista</p>
+                            <p class="label label-success">{{confirmed.profileuser.medical_specialty.name}}</p>
+                            {% else %}
+                            <p class="label label-info">Paciente</p>
+                            {% endif %}
+                                                
+                        </div>
+                    </div>
+                                    {% if confirmed.registrationprofile.tipo_usuario == 'medico' %}<!-- if tipo usuario es médico-->
+                                      <td class=" "><a href={% url 'specialist_profile' confirmed.id %}><h3><p class="label label-success"><i class="fa fa-eye"></i> Ver perfil</p></h3></a>
+                                    {% if type_user_tag == 'Paciente' %}
+
+                                    {% endif %}
+
+                                    {% else %}<!--sino es médico es 'paciente' -->
+                                      {% if type_user_tag == 'Especialista' %}
+                                         <td><a href={% url 'profile_medical_journal' confirmed.id %}><h3><p class="label label-primary"><i class="fa fa-calendar"></i> Ver diario médico </p></h3></a>
+                                         <a href={% url 'patient_profile_public' confirmed.id %}><h3><p class="label label-success"><i class="fa fa-eye"></i> Ver perfil</p></h3></a></td>
+                                      {% else %}
+                                      <td><a href={% url 'patient_profile_public' confirmed.id %}><h3><p class="label label-success"><i class="fa fa-eye"></i> Ver perfil</p></h3></a>
+                                    {% endif %}
+                                      {% endif %}<!--fin si tipo de usuario es médico -->
+                                          
+                                            
+                                            </tr>
+                                           
+                                    
+                                         {% endfor %}<!-- fin para confirmados -->
+                                                    
+                                        </tbody>
+                                        </table>
+                                      </div>
+                                      
+      </div>
+      </div>
+      {% else %}
+         <div class="alert alert-info alert-dismissable">
+                                        
+                                        <b> Aún no tiene contactos </b>
+                                        <a href={% url 'search_directory_all' %}>Adicionar <i class="fa fa-angle-double-right"></i></a>
+                                       
+                                    </div>
+      {% endif %}
+
+        
+</div>
+
+</div>
+
+</section><!-- /.content -->
+</aside><!-- /.right-side -->
+
+{% endblock %}
+<script>
+$('body').scrollspy({ target: '#navbar-example' })
+</script>

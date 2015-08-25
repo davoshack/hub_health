@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Logged out" %}{% endblock %}
+{% block content %}
+ <p class="alert alert-info">¡Regresa pronto!</p> 
+ <a class="btn btn-lg btn-success" href={% url 'auth_login' %}>
+  <i class="fa fa-sign-in fa-2x pull-left"></i> {% trans "Log in" %}</a>
+{% endblock %}

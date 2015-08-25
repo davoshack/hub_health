@@ -1,0 +1,75 @@
+{% extends "admin.html" %}
+{% load i18n pybb_tags %}
+
+{% block title %}
+{% if forum %}{% trans "New topic" %}{% else %}{% trans "New reply" %}{% endif %}
+{% endblock %}
+
+{% block extra_head %}
+    {{ block.super }}
+    {{ form.media.css }}
+{% endblock %}
+{% block extra_script %}
+    {{ block.super }}
+    {{ form.media.js }}
+    <script type="text/javascript" src="{{ STATIC_URL }}pybb/js/jquery.formset.min.js"></script>
+{% endblock %}
+
+{% block breadcrumb %}
+    {% if forum %}
+        {% with object=forum extra_crumb="New topic" %}
+            {% include 'pybb/breadcrumb.html' %}
+        {% endwith %}
+    {% else %}
+        {% with object=topic extra_crumb="New reply" %}
+            {% include 'pybb/breadcrumb.html' %}
+        {% endwith %}
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+{% load widget_tweaks %}
+<aside class="right-side">                
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Club
+      <small>inicio</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-arrow-circle-right"></i> Club</a></li>
+      <li class="active">inicio</li>
+    </ol>
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+              {% if messages %}
+                    {% for message in messages %}
+                   
+                    <div {% if message.tags == "success" %} class="alert alert-success alert-dismissable" {% endif %}>
+                                        <i class="fa fa-thumbs-o-up"></i>
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                        </b> {{message}}
+                                    </div>
+                    {% endfor %}
+                    {% endif %}
+   <div class='row'>
+    <div class='col-md-8'>
+  
+      <h1><span class="label label-info">{{ forum.name }}</span></h1>
+   
+    </div>
+  </div>
+<br>
+<div class='row'>
+<div class="col-md-12">
+<h1>{% if forum %}{% trans "New topic" %}{% else %}{% trans "New reply" %}{% endif %}</h1>
+
+{% include "pybb/post_form.html" %}                      <!-- Custom Tabs (Pulled to the right) -->
+                 
+</div>
+</div>
+</section><!-- /.content -->
+</aside><!-- /.right-side -->
+{% endblock content %}

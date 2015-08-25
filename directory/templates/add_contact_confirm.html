@@ -1,0 +1,56 @@
+{% extends "admin.html" %}
+
+{% block title %}
+Directorio - Solicitud de contacto
+{% endblock %}
+
+{% block content %}
+{% load widget_tweaks %}
+<!-- Right side column. Contains the navbar and content of the page -->
+            <aside class="right-side">                
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        Directorio
+                        <small>enviar solicitud de contacto</small>
+                        
+                    </h1>
+                    
+                    <ol class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-user-plus"></i> Directorio</a></li>
+      
+                        <li class="active">enviar solicitud de contacto</li>
+                    </ol>
+                </section>
+
+                <!-- Main content -->
+                <section class="content">
+                          <div class="row">
+                           <div class="col-md-4">
+                            <div class="box box-primary">
+                                <div class="box-header">
+                                    <h3 class="box-title">Enviar solicitud</h3>
+                                    <div class="box-tools pull-right">
+                                       <a href={% url 'search_directory_all' %}> <button class="btn btn-primary "><i class="fa fa-times"></i> Cancelar</button></a>
+                                    </div>
+                                </div><!-- /.box-header -->
+                                <!-- form start -->
+                                <div class="box-body">
+                               <div class="alert alert-info alert-dismissable">
+                                      
+                                      
+                                        <b> Enviar solicitud de contacto a <h4>{{first_name_user}} {{last_name_user}}</h4></b>
+                                        <div class="box-footer">
+                                       <a href={% url 'directory_save_contact' id %}> <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Enviar</button></a>
+                                     </div>
+                                    </div>
+                              </div>
+                            </div>
+                      
+                        </div><!-- ./col -->
+                </div> 
+                   
+                </section><!-- /.content -->
+            </aside><!-- /.right-side -->
+
+{% endblock %}

@@ -1,0 +1,1599 @@
+<!DOCTYPE html>
+{% load static from staticfiles %}
+<!--[if IE 7]>
+<html class="ie ie7" lang="en-US">
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8" lang="en-US">
+<![endif]-->
+<!--[if !(IE 7) | !(IE 8)  ]><!-->
+<html lang="en-US">
+<!--<![endif]-->
+
+<head>
+    <title>Hub Salud</title>
+   
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- For SEO -->
+    <!-- End SEO-->
+
+<!--
+    <link rel="alternate" type="application/rss+xml" title="Marble &raquo; Feed" href="http://demo.qkthemes.com/medicine/feed/" />
+    <link rel="alternate" type="application/rss+xml" title="Marble &raquo; Comments Feed" href="http://demo.qkthemes.com/medicine/comments/feed/" />
+    <link rel="alternate" type="application/rss+xml" title="Marble &raquo; Home Comments Feed" href="http://demo.qkthemes.com/medicine/home/feed/" />
+    <link rel='stylesheet' id='contact-form-7-css' href='http://demo.qkthemes.com/medicine/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=3.8.1' type='text/css' media='all' />
+    <link rel='stylesheet' id='rs-plugin-settings-css' href='http://demo.qkthemes.com/medicine/wp-content/plugins/revslider/rs-plugin/css/settings.css?rev=4.3.6&#038;ver=3.9.1' type='text/css' media='all' />
+
+-->
+
+    <link rel="shortcut icon" href="{% static "registration/img/registro_menu.png" %}">
+
+    <style type='text/css'>
+        .tp-caption.medium_grey {
+            position: absolute;
+            color: #fff;
+            text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 20px;
+            font-family: Arial;
+            padding: 2px 4px;
+            margin: 0px;
+            border-width: 0px;
+            border-style: none;
+            background-color: #888;
+            white-space: nowrap;
+        }
+        .tp-caption.small_text {
+            position: absolute;
+            color: #fff;
+            text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 20px;
+            font-family: Arial;
+            margin: 0px;
+            border-width: 0px;
+            border-style: none;
+            white-space: nowrap;
+        }
+        .tp-caption.medium_text {
+            position: absolute;
+            color: #fff;
+            text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 20px;
+            font-family: Arial;
+            margin: 0px;
+            border-width: 0px;
+            border-style: none;
+            white-space: nowrap;
+        }
+        .tp-caption.large_text {
+            position: absolute;
+            color: #fff;
+            text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+            font-weight: 700;
+            font-size: 40px;
+            line-height: 40px;
+            font-family: Arial;
+            margin: 0px;
+            border-width: 0px;
+            border-style: none;
+            white-space: nowrap;
+        }
+        .tp-caption.very_large_text {
+            position: absolute;
+            color: #fff;
+            text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+            font-weight: 700;
+            font-size: 60px;
+            line-height: 60px;
+            font-family: Arial;
+            margin: 0px;
+            border-width: 0px;
+            border-style: none;
+            white-space: nowrap;
+            letter-spacing: -2px;
+        }
+        .tp-caption.very_big_white {
+            position: absolute;
+            color: #fff;
+            text-shadow: none;
+            font-weight: 800;
+            font-size: 60px;
+            line-height: 60px;
+            font-family: Arial;
+            margin: 0px;
+            border-width: 0px;
+            border-style: none;
+            white-space: nowrap;
+            padding: 0px 4px;
+            padding-top: 1px;
+            background-color: #000;
+        }
+        .tp-caption.very_big_black {
+            position: absolute;
+            color: #000;
+            text-shadow: none;
+            font-weight: 700;
+            font-size: 60px;
+            line-height: 60px;
+            font-family: Arial;
+            margin: 0px;
+            border-width: 0px;
+            border-style: none;
+            white-space: nowrap;
+            padding: 0px 4px;
+            padding-top: 1px;
+            background-color: #fff;
+        }
+        .tp-caption.modern_medium_fat {
+            position: absolute;
+            color: #000;
+            text-shadow: none;
+            font-weight: 800;
+            font-size: 24px;
+            line-height: 20px;
+            font-family: "Open Sans", sans-serif;
+            margin: 0px;
+            border-width: 0px;
+            border-style: none;
+            white-space: nowrap;
+        }
+        .tp-caption.modern_medium_fat_white {
+            position: absolute;
+            color: #fff;
+            text-shadow: none;
+            font-weight: 800;
+            font-size: 24px;
+            line-height: 20px;
+            font-family: "Open Sans", sans-serif;
+            margin: 0px;
+            border-width: 0px;
+            border-style: none;
+            white-space: nowrap;
+        }
+        .tp-caption.modern_medium_light {
+            position: absolute;
+            color: #000;
+            text-shadow: none;
+            font-weight: 300;
+            font-size: 24px;
+            line-height: 20px;
+            font-family: "Open Sans", sans-serif;
+            margin: 0px;
+            border-width: 0px;
+            border-style: none;
+            white-space: nowrap;
+        }
+        .tp-caption.modern_big_bluebg {
+            position: absolute;
+            color: #fff;
+            text-shadow: none;
+            font-weight: 800;
+            font-size: 30px;
+            line-height: 36px;
+            font-family: "Open Sans", sans-serif;
+            padding: 3px 10px;
+            margin: 0px;
+            border-width: 0px;
+            border-style: none;
+            background-color: #4e5b6c;
+            letter-spacing: 0;
+        }
+        .tp-caption.modern_big_redbg {
+            position: absolute;
+            color: #fff;
+            text-shadow: none;
+            font-weight: 300;
+            font-size: 30px;
+            line-height: 36px;
+            font-family: "Open Sans", sans-serif;
+            padding: 3px 10px;
+            padding-top: 1px;
+            margin: 0px;
+            border-width: 0px;
+            border-style: none;
+            background-color: #de543e;
+            letter-spacing: 0;
+        }
+        .tp-caption.modern_small_text_dark {
+            position: absolute;
+            color: #555;
+            text-shadow: none;
+            font-size: 14px;
+            line-height: 22px;
+            font-family: Arial;
+            margin: 0px;
+            border-width: 0px;
+            border-style: none;
+            white-space: nowrap;
+        }
+        .tp-caption.boxshadow {
+            -moz-box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+            -webkit-box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+        }
+        .tp-caption.black {
+            color: #000;
+            text-shadow: none;
+        }
+        .tp-caption.noshadow {
+            text-shadow: none;
+        }
+        .tp-caption.thinheadline_dark {
+            position: absolute;
+            color: rgba(0, 0, 0, 0.85);
+            text-shadow: none;
+            font-weight: 300;
+            font-size: 30px;
+            line-height: 30px;
+            font-family: "Open Sans";
+            background-color: transparent;
+        }
+        .tp-caption.thintext_dark {
+            position: absolute;
+            color: rgba(0, 0, 0, 0.85);
+            text-shadow: none;
+            font-weight: 300;
+            font-size: 16px;
+            line-height: 26px;
+            font-family: "Open Sans";
+            background-color: transparent;
+        }
+        .tp-caption.largeblackbg {
+            position: absolute;
+            color: #fff;
+            text-shadow: none;
+            font-weight: 300;
+            font-size: 50px;
+            line-height: 70px;
+            font-family: "Open Sans";
+            background-color: #000;
+            padding: 0px 20px;
+            -webkit-border-radius: 0px;
+            -moz-border-radius: 0px;
+            border-radius: 0px;
+        }
+        .tp-caption.largepinkbg {
+            position: absolute;
+            color: #fff;
+            text-shadow: none;
+            font-weight: 300;
+            font-size: 50px;
+            line-height: 70px;
+            font-family: "Open Sans";
+            background-color: #db4360;
+            padding: 0px 20px;
+            -webkit-border-radius: 0px;
+            -moz-border-radius: 0px;
+            border-radius: 0px;
+        }
+        .tp-caption.largewhitebg {
+            position: absolute;
+            color: #000;
+            text-shadow: none;
+            font-weight: 300;
+            font-size: 50px;
+            line-height: 70px;
+            font-family: "Open Sans";
+            background-color: #fff;
+            padding: 0px 20px;
+            -webkit-border-radius: 0px;
+            -moz-border-radius: 0px;
+            border-radius: 0px;
+        }
+        .tp-caption.largegreenbg {
+            position: absolute;
+            color: #fff;
+            text-shadow: none;
+            font-weight: 300;
+            font-size: 50px;
+            line-height: 70px;
+            font-family: "Open Sans";
+            background-color: #67ae73;
+            padding: 0px 20px;
+            -webkit-border-radius: 0px;
+            -moz-border-radius: 0px;
+            border-radius: 0px;
+        }
+        .tp-caption.excerpt {
+            font-size: 36px;
+            line-height: 36px;
+            font-weight: 700;
+            font-family: Arial;
+            color: #ffffff;
+            text-decoration: none;
+            background-color: rgba(0, 0, 0, 1);
+            text-shadow: none;
+            margin: 0px;
+            letter-spacing: -1.5px;
+            padding: 1px 4px 0px 4px;
+            width: 150px;
+            white-space: normal !important;
+            height: auto;
+            border-width: 0px;
+            border-color: rgb(255, 255, 255);
+            border-style: none;
+        }
+        .tp-caption.large_bold_grey {
+            font-size: 60px;
+            line-height: 60px;
+            font-weight: 800;
+            font-family: "Open Sans";
+            color: rgb(102, 102, 102);
+            text-decoration: none;
+            background-color: transparent;
+            text-shadow: none;
+            margin: 0px;
+            padding: 1px 4px 0px;
+            border-width: 0px;
+            border-color: rgb(255, 214, 88);
+            border-style: none;
+        }
+        .tp-caption.medium_thin_grey {
+            font-size: 34px;
+            line-height: 30px;
+            font-weight: 300;
+            font-family: "Open Sans";
+            color: rgb(102, 102, 102);
+            text-decoration: none;
+            background-color: transparent;
+            padding: 1px 4px 0px;
+            text-shadow: none;
+            margin: 0px;
+            border-width: 0px;
+            border-color: rgb(255, 214, 88);
+            border-style: none;
+        }
+        .tp-caption.small_thin_grey {
+            font-size: 18px;
+            line-height: 26px;
+            font-weight: 300;
+            font-family: "Open Sans";
+            color: rgb(117, 117, 117);
+            text-decoration: none;
+            background-color: transparent;
+            padding: 1px 4px 0px;
+            text-shadow: none;
+            margin: 0px;
+            border-width: 0px;
+            border-color: rgb(255, 214, 88);
+            border-style: none;
+        }
+        .tp-caption.lightgrey_divider {
+            text-decoration: none;
+            background-color: rgba(235, 235, 235, 1);
+            width: 370px;
+            height: 3px;
+            background-position: initial initial;
+            background-repeat: initial initial;
+            border-width: 0px;
+            border-color: rgb(34, 34, 34);
+            border-style: none;
+        }
+        .tp-caption.large_bold_darkblue {
+            font-size: 58px;
+            line-height: 60px;
+            font-weight: 800;
+            font-family: "Open Sans";
+            color: rgb(52, 73, 94);
+            text-decoration: none;
+            background-color: transparent;
+            border-width: 0px;
+            border-color: rgb(255, 214, 88);
+            border-style: none;
+        }
+        .tp-caption.medium_bg_darkblue {
+            font-size: 20px;
+            line-height: 20px;
+            font-weight: 800;
+            font-family: "Open Sans";
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            background-color: rgb(52, 73, 94);
+            padding: 10px;
+            border-width: 0px;
+            border-color: rgb(255, 214, 88);
+            border-style: none;
+        }
+        .tp-caption.medium_bold_red {
+            font-size: 24px;
+            line-height: 30px;
+            font-weight: 800;
+            font-family: "Open Sans";
+            color: rgb(227, 58, 12);
+            text-decoration: none;
+            background-color: transparent;
+            padding: 0px;
+            border-width: 0px;
+            border-color: rgb(255, 214, 88);
+            border-style: none;
+        }
+        .tp-caption.medium_light_red {
+            font-size: 21px;
+            line-height: 26px;
+            font-weight: 300;
+            font-family: "Open Sans";
+            color: rgb(227, 58, 12);
+            text-decoration: none;
+            background-color: transparent;
+            padding: 0px;
+            border-width: 0px;
+            border-color: rgb(255, 214, 88);
+            border-style: none;
+        }
+        .tp-caption.medium_bg_red {
+            font-size: 20px;
+            line-height: 20px;
+            font-weight: 800;
+            font-family: "Open Sans";
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            background-color: rgb(227, 58, 12);
+            padding: 10px;
+            border-width: 0px;
+            border-color: rgb(255, 214, 88);
+            border-style: none;
+        }
+        .tp-caption.medium_bold_orange {
+            font-size: 24px;
+            line-height: 30px;
+            font-weight: 800;
+            font-family: "Open Sans";
+            color: rgb(243, 156, 18);
+            text-decoration: none;
+            background-color: transparent;
+            border-width: 0px;
+            border-color: rgb(255, 214, 88);
+            border-style: none;
+        }
+        .tp-caption.medium_bg_orange {
+            font-size: 20px;
+            line-height: 20px;
+            font-weight: 800;
+            font-family: "Open Sans";
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            background-color: rgb(243, 156, 18);
+            padding: 10px;
+            border-width: 0px;
+            border-color: rgb(255, 214, 88);
+            border-style: none;
+        }
+        .tp-caption.grassfloor {
+            text-decoration: none;
+            background-color: rgba(160, 179, 151, 1);
+            width: 4000px;
+            height: 150px;
+            border-width: 0px;
+            border-color: rgb(34, 34, 34);
+            border-style: none;
+        }
+        .tp-caption.large_bold_white {
+            font-size: 58px;
+            line-height: 60px;
+            font-weight: 800;
+            font-family: "Open Sans";
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            background-color: transparent;
+            border-width: 0px;
+            border-color: rgb(255, 214, 88);
+            border-style: none;
+        }
+        .tp-caption.medium_light_white {
+            font-size: 30px;
+            line-height: 36px;
+            font-weight: 300;
+            font-family: "Open Sans";
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            background-color: transparent;
+            padding: 0px;
+            border-width: 0px;
+            border-color: rgb(255, 214, 88);
+            border-style: none;
+        }
+        .tp-caption.mediumlarge_light_white {
+            font-size: 34px;
+            line-height: 40px;
+            font-weight: 300;
+            font-family: "Open Sans";
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            background-color: transparent;
+            padding: 0px;
+            border-width: 0px;
+            border-color: rgb(255, 214, 88);
+            border-style: none;
+        }
+        .tp-caption.mediumlarge_light_white_center {
+            font-size: 34px;
+            line-height: 40px;
+            font-weight: 300;
+            font-family: "Open Sans";
+            color: #ffffff;
+            text-decoration: none;
+            background-color: transparent;
+            padding: 0px 0px 0px 0px;
+            text-align: center;
+            border-width: 0px;
+            border-color: rgb(255, 214, 88);
+            border-style: none;
+        }
+        .tp-caption.medium_bg_asbestos {
+            font-size: 20px;
+            line-height: 20px;
+            font-weight: 800;
+            font-family: "Open Sans";
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            background-color: rgb(127, 140, 141);
+            padding: 10px;
+            border-width: 0px;
+            border-color: rgb(255, 214, 88);
+            border-style: none;
+        }
+        .tp-caption.medium_light_black {
+            font-size: 30px;
+            line-height: 36px;
+            font-weight: 300;
+            font-family: "Open Sans";
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            background-color: transparent;
+            padding: 0px;
+            border-width: 0px;
+            border-color: rgb(255, 214, 88);
+            border-style: none;
+        }
+        .tp-caption.large_bold_black {
+            font-size: 58px;
+            line-height: 60px;
+            font-weight: 800;
+            font-family: "Open Sans";
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            background-color: transparent;
+            border-width: 0px;
+            border-color: rgb(255, 214, 88);
+            border-style: none;
+        }
+        .tp-caption.mediumlarge_light_darkblue {
+            font-size: 34px;
+            line-height: 40px;
+            font-weight: 300;
+            font-family: "Open Sans";
+            color: rgb(52, 73, 94);
+            text-decoration: none;
+            background-color: transparent;
+            padding: 0px;
+            border-width: 0px;
+            border-color: rgb(255, 214, 88);
+            border-style: none;
+        }
+        .tp-caption.small_light_white {
+            font-size: 17px;
+            line-height: 28px;
+            font-weight: 300;
+            font-family: "Open Sans";
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            background-color: transparent;
+            padding: 0px;
+            border-width: 0px;
+            border-color: rgb(255, 214, 88);
+            border-style: none;
+        }
+        .tp-caption.roundedimage {
+            border-width: 0px;
+            border-color: rgb(34, 34, 34);
+            border-style: none;
+        }
+        .tp-caption.large_bg_black {
+            font-size: 40px;
+            line-height: 40px;
+            font-weight: 800;
+            font-family: "Open Sans";
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            background-color: rgb(0, 0, 0);
+            padding: 10px 20px 15px;
+            border-width: 0px;
+            border-color: rgb(255, 214, 88);
+            border-style: none;
+        }
+        .tp-caption.mediumwhitebg {
+            font-size: 30px;
+            line-height: 30px;
+            font-weight: 300;
+            font-family: "Open Sans";
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            background-color: rgb(255, 255, 255);
+            padding: 5px 15px 10px;
+            text-shadow: none;
+            border-width: 0px;
+            border-color: rgb(0, 0, 0);
+            border-style: none;
+        }
+        .tp-caption.medium_thin_white {
+            font-size: 18px;
+            line-height: 25px;
+            font-weight: 600;
+            font-family: Arial;
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            background-color: transparent;
+            text-shadow: rgba(0, 0, 0, 0.498039) 0px 2px 5px;
+            margin: 0px;
+            white-space: nowrap;
+            border-width: 0px;
+            border-color: rgb(255, 255, 255);
+            border-style: none;
+        }
+        .tp-caption a {
+            color: #ff7302;
+            text-shadow: none;
+            -webkit-transition: all 0.2s ease-out;
+            -moz-transition: all 0.2s ease-out;
+            -o-transition: all 0.2s ease-out;
+            -ms-transition: all 0.2s ease-out;
+        }
+        .tp-caption a:hover {
+            color: #ffa902;
+        }
+    </style>
+    <link rel='stylesheet' id='tweets-css' href={% static "registration/css/tweets.css" %} type='text/css' media='all' />
+    <link rel='stylesheet' id='google-font-css' href='http://fonts.googleapis.com/css?family=Raleway%3A400%2C500%2C600%2C700%2C300%2C100%2C200&#038;ver=3.9.1' type='text/css' media='all' />
+    <link rel='stylesheet' id='bootstrap-css' href={% static "registration/css/bootstrap.css" %} type='text/css' media='all' />
+    <link rel='stylesheet' id='font-awesome-css' href={% static "registration/css/font-awesome.css" %} type='text/css' media='all' />
+    <link rel='stylesheet' id='animate-css' href={% static "registration/css/animate.css" %} type='text/css' media='all' />
+    <link rel='stylesheet' id='flexslider-css' href={% static "registration/css/flexslider.css" %} type='text/css' media='all' />
+    <link rel='stylesheet' id='carousel-css' href={% static "registration/css/owl.carousel.css" %} type='text/css' media='all' />
+    <link rel='stylesheet' id='owl.theme-css' href={% static "registration/css/owl.theme.css" %} type='text/css' media='all' />
+    <link rel='stylesheet' id='magnific-css' href={% static "registration/css/magnific-popup.css" %} type='text/css' media='all' />
+    <link rel='stylesheet' id='bxslider-css' href={% static "registration/css/jquery.bxslider.css" %} type='text/css' media='all' />
+    <link rel='stylesheet' id='settings-css' href={% static "registration/css/settings.css" %} type='text/css' media='all' />
+    <link rel='stylesheet' id='marble-css'  href={% static "registration/css/marble_style.css" %} type='text/css' media='all' />
+    <link rel='stylesheet' id='theme-style-css' href={% static "registration/css/style.css" %} type='text/css' media='all' /> 
+    <link rel='stylesheet' id='color-css' href={% static "registration/css/color.css" %} type='text/css' media='all' />
+    <link rel='stylesheet' id='redux-google-fonts-css' href='http://fonts.googleapis.com/css?family=Raleway%3A400&#038;subset=latin&#038;ver=1401425423' type='text/css' media='all' />
+    <script type='text/javascript' src={% static "registration/js/jquery.js" %}></script>
+    <script type='text/javascript' src='http://demo.qkthemes.com/medicine/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>
+    <script type='text/javascript' src='http://demo.qkthemes.com/medicine/wp-content/plugins/revslider/rs-plugin/js/jquery.themepunch.plugins.min.js?rev=4.3.6&#038;ver=3.9.1'></script>
+    <script type='text/javascript' src='http://demo.qkthemes.com/medicine/wp-content/plugins/revslider/rs-plugin/js/jquery.themepunch.revolution.min.js?rev=4.3.6&#038;ver=3.9.1'></script>
+   
+    <!--[if lt IE 9]>
+			  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+			<![endif]-->
+    <style type="text/css" title="dynamic-css" class="options-output">
+        body {
+            font-family: Raleway;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 13px;
+            line-height: 20px;
+            color: #dddddd;
+        }
+    </style>
+</head>
+
+<body class="home page page-id-89 page-template page-template-template-buider-php">
+    <!-- Container -->
+    <div id="container">
+        <!-- Header
+		    ================================================== -->
+        <header class="clearfix">
+            <!-- Static navbar -->
+            <div class="navbar navbar-default navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="/" title="Hub Salud">
+
+                            <img src={% static "registration/img/logoeslogan_v1.png" %} alt="Hub Salud">
+
+                        </a>
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul data-breakpoint="800" id="menu-main-menu" class="nav navbar-nav navbar-right">
+                            <li id="menu-item-138" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-138 drop"><a title="Blog" href="/blog/" target="_blank">Blog </a>
+                            </li>
+
+                            <li id="menu-item-157" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-157 drop"><a title="Entrar" href={% url 'auth_login' %}>Entrar </a>
+                            </li>
+                           
+                            <li id="menu-item-157" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-157 drop"><a title="Entrar" href={% url 'pre_register' %}>Regístrese </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+        <!-- End Header -->
+        <div id="aq-template-wrapper-92" class="aq-template-wrapper aq_row">
+            <section id="slider" class="slider1 section-content clearfix">
+                <div data-appear-top-offset="" data-animated="">
+                    <!-- START REVOLUTION SLIDER 4.3.6 fullwidth mode -->
+
+                    <div id="rev_slider_2_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container" style="margin:0px auto;background-color:#E9E9E9;padding:0px;margin-top:0px;margin-bottom:0px;max-height:738px;">
+                        <div id="rev_slider_2_1" class="rev_slider fullwidthabanner" style="display:none;max-height:738px;height:738;">
+                            <ul>
+                                <!-- SLIDE  -->
+                                <li data-transition="curtain-1" data-slotamount="7" data-masterspeed="50">
+                                    <!-- MAIN IMAGE -->
+
+                                    <img src="{% static "registration/img/Fotolia_Subscription_Monthly_J.jpg" %}" alt="back62" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+                                    <!-- LAYERS -->
+
+                                    <!-- LAYER NR. 1 -->
+                                    <div class="tp-caption large_bold_white skewfromleftshort tp-resizeme" data-x="15" data-y="200" data-speed="500" data-start="1200" data-easing="Back.easeOut" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="500" data-endeasing="Power4.easeIn" style="z-index: 2; max-width: auto; max-height: auto; white-space: nowrap;">Hub Salud
+                                    </div>
+
+                                    <!-- LAYER NR. 2 -->
+                                    <div class="tp-caption medium_thin_white customin tp-resizeme" data-x="15" data-y="350" data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;" data-speed="1000" data-start="1500" data-easing="Back.easeOut" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="400" data-endeasing="Back.easeIn" style="z-index: 3; max-width: auto; max-height: auto; white-space: nowrap;">Centro de comunicación, relacionamiento y servicios 
+                                    <br>entre especialistas, pacientes y socios estratégicos en salud.
+                                    </div>
+
+                                    <!-- LAYER NR. 3 -->
+                                    <div class="tp-caption medium_thin_white customin tp-resizeme" data-x="15" data-y="450" data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;" data-speed="1000" data-start="1800" data-easing="Back.easeOut" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="400" data-endeasing="Back.easeIn" style="z-index: 4; max-width: auto; max-height: auto; white-space: nowrap;"><a class="button-large" href={% url 'pre_register' %}>Regístrate Ya</a>
+                                    </div>
+
+                                    <!-- LAYER NR. 4 -->
+                                    <div class="tp-caption skewfromleftshort" data-x="759" data-y="120" data-speed="500" data-start="2500" data-easing="Back.easeOut" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="500" data-endeasing="Back.easeIn" style="z-index: 5;">
+                                    </div>
+                                </li>
+                                <!-- SLIDE  -->
+                                <li data-transition="random" data-slotamount="7" data-masterspeed="50">
+                                    <!-- MAIN IMAGE -->
+
+                                    <img src="{% static "registration/img/Fotolia_medicosinternet.jpg" %}" alt="back1" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+                                    <!-- LAYERS -->
+
+                                    <!-- LAYER NR. 1 -->
+                                    <div class="tp-caption skewfromleftshort" data-x="0" data-y="120" data-speed="500" data-start="1200" data-easing="Back.easeOut" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="500" data-endeasing="Power4.easeIn" style="z-index: 2;">
+                                    </div>
+
+                                    <!-- LAYER NR. 2 -->
+                                    <div class="tp-caption large_bold_white skewfromleftshort tp-resizeme" data-x="499" data-y="199" data-speed="500" data-start="1800" data-easing="Back.easeOut" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="500" data-endeasing="Power4.easeIn" style="z-index: 3; max-width: auto; max-height: auto; white-space: nowrap;">Acceso Inmediato
+                                    </div>
+
+                                    <!-- LAYER NR. 3 -->
+                                    <div class="tp-caption medium_thin_white skewfromleftshort tp-resizeme" data-x="500" data-y="350" data-speed="1000" data-start="2100" data-easing="Back.easeInOut" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="400" data-endeasing="Back.easeIn" style="z-index: 4; max-width: auto; max-height: auto; white-space: nowrap;">La nueva manera de acceder a servicios especializados de salud,
+                                        <br>desde cualquier lugar del mundo, vía internet.
+                                    </div>
+
+                                    <!-- LAYER NR. 4 -->
+                                    <div class="tp-caption medium_thin_white skewfromleftshort tp-resizeme" data-x="500" data-y="450" data-speed="1000" data-start="2400" data-easing="Back.easeInOut" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="400" data-endeasing="Back.easeIn" style="z-index: 5; max-width: auto; max-height: auto; white-space: nowrap;"><a class="button-large" href={% url 'pre_register' %}>Regístrate Ya</a>
+                                    </div>
+                                </li>
+                                <!-- SLIDE  -->
+                                <li data-transition="random" data-slotamount="7" data-masterspeed="50">
+                                    <!-- MAIN IMAGE -->
+
+                                    <img src="{% static "registration/img/Fotolia_Actualidadmedicavirtual.jpg" %}" alt="slide11" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+                                    <!-- LAYERS -->
+
+                                    <!-- LAYER NR. 1 -->
+                                    <div class="tp-caption large_bold_white skewfromleftshort tp-resizeme" data-x="250" data-y="274" data-speed="500" data-start="1200" data-easing="Back.easeOut" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="500" data-endeasing="Power4.easeIn" style="z-index: 2; max-width: auto; max-height: auto; white-space: nowrap;">Orientación Médica Online
+                                    </div>
+
+                                    <!-- LAYER NR. 2 -->
+                                    <div class="tp-caption medium_thin_white customin tp-resizeme" data-x="170" data-y="340" data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;" data-speed="1000" data-start="1500" data-easing="Back.easeInOut" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="400" data-endeasing="Back.easeIn" style="z-index: 3; max-width: auto; max-height: auto; white-space: nowrap;">Acceda a información exclusiva y personalizada 
+                                     <br>desde nuestra plataforma virtual.
+                                    </div>
+
+                                    <!-- LAYER NR. 3 -->
+                                    <div class="tp-caption medium_thin_white customin tp-resizeme" data-x="470" data-y="400" data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;" data-speed="1000" data-start="2000" data-easing="Back.easeInOut" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="400" data-endeasing="Back.easeIn" style="z-index: 4; max-width: auto; max-height: auto; white-space: nowrap;"><a class="button-large" href={% url 'pre_register' %}>Regístrese Ya</a>
+                                    </div>
+                                </li>
+                                <!-- SLIDE  -->
+                                <li data-transition="random" data-slotamount="7" data-masterspeed="50">
+                                    <!-- MAIN IMAGE -->
+
+                                    <img src="{% static "registration/img/Fotolia_RespuestasMedicasalpcte.jpg" %}" alt="back51" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+                                    <!-- LAYERS -->
+
+                                    <!-- LAYER NR. 1 -->
+                                    <div class="tp-caption large_bold_white skewfromleftshort tp-resizeme" data-x="170" data-y="274" data-speed="500" data-start="1200" data-easing="Back.easeOut" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="500" data-endeasing="Power4.easeIn" style="z-index: 2; max-width: auto; max-height: auto; white-space: nowrap;">Preguntas &amp; Respuestas
+                                    </div>
+
+                                    <!-- LAYER NR. 2 -->
+                                    <div class="tp-caption medium_thin_white customin tp-resizeme" data-x="170" data-y="340" data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;" data-speed="1000" data-start="1500" data-easing="Back.easeInOut" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="400" data-endeasing="Back.easeIn" style="z-index: 3; max-width: auto; max-height: auto; white-space: nowrap;">Encuentra respuesta a las dudas y preguntas sobre tu salud,
+                                        <br>y obtén una comunicación directa y rápida con tu especialista.
+                                    </div>
+
+                                    <!-- LAYER NR. 3 -->
+                                    <div class="tp-caption medium_thin_white customin tp-resizeme" data-x="390" data-y="400" data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;" data-speed="1000" data-start="2000" data-easing="Back.easeInOut" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="400" data-endeasing="Back.easeIn" style="z-index: 4; max-width: auto; max-height: auto; white-space: nowrap;"><a class="button-large" href={% url 'pre_register' %}>Regístrate Ya</a>
+                                    </div>
+                                </li>
+                                <!-- SLIDE -->
+
+                                <!-- SLIDE  -->
+                                <li data-transition="curtain-1" data-slotamount="7" data-masterspeed="50">
+                                    <!-- MAIN IMAGE -->
+
+                                    <img src="{% static "registration/img/Fotolia_historiaclinicavirtual1.jpg" %}" alt="back62" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+                                    <!-- LAYERS -->
+
+                                    <!-- LAYER NR. 1 -->
+                                    <div class="tp-caption large_bold_white skewfromleftshort tp-resizeme" data-x="15" data-y="200" data-speed="500" data-start="1200" data-easing="Back.easeOut" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="500" data-endeasing="Power4.easeIn" style="z-index: 2; max-width: auto; max-height: auto; white-space: nowrap;">Tus Datos de Salud Online
+                                    </div>
+
+                                    <!-- LAYER NR. 2 -->
+                                    <div class="tp-caption medium_thin_white customin tp-resizeme" data-x="15" data-y="350" data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;" data-speed="1000" data-start="1500" data-easing="Back.easeOut" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="400" data-endeasing="Back.easeIn" style="z-index: 3; max-width: auto; max-height: auto; white-space: nowrap;">Crea y administra tu propia historia clínica,
+                                     <br> y compártela con los especialistas de tu preferencia.
+                                    </div>
+
+                                    <!-- LAYER NR. 3 -->
+                                    <div class="tp-caption medium_thin_white customin tp-resizeme" data-x="15" data-y="450" data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;" data-speed="1000" data-start="1800" data-easing="Back.easeOut" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="400" data-endeasing="Back.easeIn" style="z-index: 4; max-width: auto; max-height: auto; white-space: nowrap;"><a class="button-large" href={% url 'pre_register' %}>Regístrate Ya</a>
+                                    </div>
+
+                                    <!-- LAYER NR. 4 -->
+                                    <div class="tp-caption skewfromleftshort" data-x="759" data-y="120" data-speed="500" data-start="2500" data-easing="Back.easeOut" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="500" data-endeasing="Back.easeIn" style="z-index: 5;">
+                                    </div>
+                                </li>
+                                 <!-- SLIDE  -->
+                                <li data-transition="curtain-1" data-slotamount="7" data-masterspeed="50">
+                                    <!-- MAIN IMAGE -->
+
+                                    <img src="{% static "registration/img/Fotolia_PlataformaHuBSaludDiap1.jpg" %}" alt="back62" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+                                    <!-- LAYERS -->
+
+                                    <!-- LAYER NR. 1 -->
+                                    <div class="tp-caption large_bold_white skewfromleftshort tp-resizeme" data-x="15" data-y="200" data-speed="500" data-start="1200" data-easing="Back.easeOut" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="500" data-endeasing="Power4.easeIn" style="z-index: 2; max-width: auto; max-height: auto; white-space: nowrap;">Audio y video
+                                    </div>
+
+                                    <!-- LAYER NR. 2 -->
+                                    <div class="tp-caption medium_thin_white customin tp-resizeme" data-x="15" data-y="350" data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;" data-speed="1000" data-start="1500" data-easing="Back.easeOut" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="400" data-endeasing="Back.easeIn" style="z-index: 3; max-width: auto; max-height: auto; white-space: nowrap;">Obtén respuestas a tus inquietudes médicas gracias  
+                                    <br>a los contenidos que tu especialista pone a tu servicio a través de archivos de audio y video.
+                                    </div>
+
+                                    <!-- LAYER NR. 3 -->
+                                    <div class="tp-caption medium_thin_white customin tp-resizeme" data-x="15" data-y="450" data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;" data-speed="1000" data-start="1800" data-easing="Back.easeOut" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="400" data-endeasing="Back.easeIn" style="z-index: 4; max-width: auto; max-height: auto; white-space: nowrap;"><a class="button-large" href={% url 'pre_register' %}>Regístrate Ya</a>
+                                    </div>
+
+                                    <!-- LAYER NR. 4 -->
+                                    <div class="tp-caption skewfromleftshort" data-x="759" data-y="120" data-speed="500" data-start="2500" data-easing="Back.easeOut" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="500" data-endeasing="Back.easeIn" style="z-index: 5;">
+                                    </div>
+                                </li>
+                                    <!--SLIDE -->
+    <li data-transition="random" data-slotamount="7" data-masterspeed="50" >
+        <!-- MAIN IMAGE -->
+
+        <img src="{% static "registration/img/Fotolia_Pacientecelularhospital.jpg" %}"  alt="back1"  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+        <!-- LAYERS -->
+
+        <!-- LAYER NR. 1 -->
+        <div class="tp-caption skewfromleftshort"
+            data-x="0"
+            data-y="120"
+            data-speed="500"
+            data-start="1200"
+            data-easing="Back.easeOut"
+            data-splitin="none"
+            data-splitout="none"
+            data-elementdelay="0.1"
+            data-endelementdelay="0.1"
+            data-endspeed="500"
+            data-endeasing="Power4.easeIn"
+            style="z-index: 2;">
+        </div>
+
+        <!-- LAYER NR. 2 -->
+        <div class="tp-caption large_bold_white skewfromleftshort tp-resizeme"
+            data-x="499"
+            data-y="199"
+            data-speed="500"
+            data-start="1800"
+            data-easing="Back.easeOut"
+            data-splitin="none"
+            data-splitout="none"
+            data-elementdelay="0.1"
+            data-endelementdelay="0.1"
+            data-endspeed="500"
+            data-endeasing="Power4.easeIn"
+            style="z-index: 3; max-width: auto; max-height: auto; white-space: nowrap;">Accede sin ningún costo
+        </div>
+
+        <!-- LAYER NR. 3 -->
+        <div class="tp-caption medium_thin_white skewfromleftshort tp-resizeme"
+            data-x="500"
+            data-y="350"
+            data-speed="1000"
+            data-start="2100"
+            data-easing="Back.easeInOut"
+            data-splitin="none"
+            data-splitout="none"
+            data-elementdelay="0.1"
+            data-endelementdelay="0.1"
+            data-endspeed="400"
+            data-endeasing="Back.easeIn"
+            style="z-index: 4; max-width: auto; max-height: auto; white-space: nowrap;">Consulta a tu médico desde la comodidad de tu hogar o desde cualquier sitio.
+        </div>
+
+        <!-- LAYER NR. 4 -->
+        <div class="tp-caption medium_thin_white skewfromleftshort tp-resizeme"
+            data-x="500"
+            data-y="450"
+            data-speed="1000"
+            data-start="2400"
+            data-easing="Back.easeInOut"
+            data-splitin="none"
+            data-splitout="none"
+            data-elementdelay="0.1"
+            data-endelementdelay="0.1"
+            data-endspeed="400"
+            data-endeasing="Back.easeIn"
+            style="z-index: 5; max-width: auto; max-height: auto; white-space: nowrap;"><a class="button-large" href="/cuenta/register/">Regístrate Ya</a>
+        </div>
+    </li>
+                            </ul>
+                            <div class="tp-bannertimer tp-bottom" style="visibility: hidden !important;"></div>
+                        </div>
+                    </div>
+                    <script type="text/javascript">
+                        var tpj = jQuery;
+                        tpj.noConflict();
+                        var revapi2;
+
+                        tpj(document).ready(function () {
+
+                            if (tpj('#rev_slider_2_1').revolution == undefined)
+                                revslider_showDoubleJqueryError('#rev_slider_2_1');
+                            else
+                                revapi2 = tpj('#rev_slider_2_1').show().revolution({
+                                    dottedOverlay: "none",
+                                    delay: 6000,
+                                    startwidth: 1170,
+                                    startheight: 738,
+                                    hideThumbs: 200,
+
+                                    thumbWidth: 100,
+                                    thumbHeight: 50,
+                                    thumbAmount: 4,
+
+                                    navigationType: "bullet",
+                                    navigationArrows: "solo",
+                                    navigationStyle: "round",
+
+                                    touchenabled: "on",
+                                    onHoverStop: "on",
+
+                                    swipe_velocity: 0.7,
+                                    swipe_min_touches: 1,
+                                    swipe_max_touches: 1,
+                                    drag_block_vertical: false,
+
+                                    keyboardNavigation: "off",
+
+                                    navigationHAlign: "center",
+                                    navigationVAlign: "bottom",
+                                    navigationHOffset: 60,
+                                    navigationVOffset: 20,
+
+                                    soloArrowLeftHalign: "left",
+                                    soloArrowLeftValign: "center",
+                                    soloArrowLeftHOffset: 20,
+                                    soloArrowLeftVOffset: 0,
+
+                                    soloArrowRightHalign: "right",
+                                    soloArrowRightValign: "center",
+                                    soloArrowRightHOffset: 20,
+                                    soloArrowRightVOffset: 0,
+
+                                    shadow: 0,
+                                    fullWidth: "on",
+                                    fullScreen: "off",
+
+                                    spinner: "spinner0",
+
+                                    stopLoop: "off",
+                                    stopAfterLoops: -1,
+                                    stopAtSlide: -1,
+
+
+                                    shuffle: "off",
+
+                                    autoHeight: "off",
+                                    forceFullWidth: "on",
+
+
+                                    hideTimerBar: "on",
+                                    hideThumbsOnMobile: "off",
+                                    hideNavDelayOnMobile: 1500,
+                                    hideBulletsOnMobile: "off",
+                                    hideArrowsOnMobile: "off",
+                                    hideThumbsUnderResolution: 0,
+
+                                    hideSliderAtLimit: 0,
+                                    hideCaptionAtLimit: 0,
+                                    hideAllCaptionAtLilmit: 0,
+                                    startWithSlide: 0,
+                                    videoJsPath: "http://demo.qkthemes.com/medicine/wp-content/plugins/revslider/rs-plugin/videojs/",
+                                    fullScreenOffsetContainer: ""
+                                });
+
+                        }); //ready
+                    </script>
+
+                    <!-- END REVOLUTION SLIDER -->
+                </div>
+
+            </section>
+            <section class="services-section section-content clearfix">
+                <div class="title-section">
+                    <div style="" class="container triggerAnimation animated bounceIn" data-animate="bounceIn">
+                        <h1>Descubre Nuestro Club de Pacientes</h1>
+                        <p>Únete y escoge a tu especialista</p>
+                    </div>
+                </div>
+
+                <div style="background-image:url({% static "registration/img/Fotolia_Subscription_Monthly_T.jpg" %}); " class="services-box parallax" data-stellar-background-ratio="0">
+                    <div class="">
+                        <div class="container ">
+                            <div class="row ">
+                                <div class="col-sm-3 first">
+                                    <div class="services-post triggerAnimation animated" data-animate="flipInY">
+                                        <div class="services-head">
+                                            <a href="#" class="icon"><i class="fa fa-user-md-up"></i></a>
+                                            <h2>Diabetes</h2>
+                                            <span>Club de diabéticos.</span>
+                                        </div>
+                                       
+                                        <a href="#" class="button-one">Más información</a>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-3 ">
+                                    <div class="services-post triggerAnimation animated" data-animate="flipInY">
+                                        <div class="services-head">
+                                            <a href="#" class="icon"><i class=""></i></a>
+                                            <h2>Cardiovascular</h2>
+                                            <span>Club Cardiovascular.</span>
+                                        </div>
+                                        
+                                        <a href="#" class="button-one">Más información</a>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-3 ">
+                                    <div class="services-post triggerAnimation animated" data-animate="flipInY">
+                                        <div class="services-head">
+                                            <a href="#" class="icon"><i class=""></i></a>
+                                            <h2>Hipertensión</h2>
+                                            <span>Club Hipertensión.</span>
+                                        </div>
+                                       <!-- <p>Resumen</p> -->
+                                        <a href="#" class="button-one">Más información</a>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-3 ">
+                                    <div class="services-post triggerAnimation animated" data-animate="flipInY">
+                                        <div class="services-head">
+                                            <a href="#" class="icon"><i class=""></i></a>
+                                            <h2>Vida Saludable</h2>
+                                            <span>Club Vida Saludable.</span>
+                                        </div>
+                                       <!-- <p>Resumen</p> -->
+                                        <a href="#" class="button-one">Más información</a>
+                                    </div>
+                                </div>
+
+
+                                <div class="plans"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class=" portfolio-section section-content clearfix">
+                <div class="title-section">
+                    <div class="container triggerAnimation animated" data-animate="bounceIn">
+                        <h1>Testimonios</h1>
+                        <p>Qué opinan nuestros especialistas y pacientes</p>
+                    </div>
+                </div>
+
+
+
+            </section>
+            <section style="background-image:url({% static "registration/img/Fotolia_Subscription_Monthly_S.jpg" %}); " class="features-section parallax section-content " data-stellar-background-ratio="0">
+                <div class="">
+                    <div class="container ">
+                        <div class="row ">
+                            <div data-appear-top-offset="" data-animated="">
+                                <div class="features-head triggerAnimation animated" data-animate="bounceIn">
+                                    <h1>Nuestra plataforma</h1>
+                                    <p>¿Qué te ofrece Hub Salud?</p>
+
+                                </div>
+                            </div>
+                            <div id="shine-block-92-16" class="shine-block block-feature_list col-md-4 first clearfix">
+                                <ul class="feature-list triggerAnimation animated" data-animate="slideInLeft">
+                                <h3>Pacientes</h3>
+                                    <li>
+                                        <span><i class=""></i></span>
+                                        <div class="list-cont">
+                                            <h3>Comunicación directa con tu especialista</h3>
+                                            <!--<p>Info...</p>-->
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span><i class=""></i></span>
+                                        <div class="list-cont">
+                                            <h3>Todos tus datos de salud en la nube</h3>
+                                         
+                                        </div>
+                                    </li>
+
+                                      <li>
+                                        <span><i class=""></i></span>
+                                        <div class="list-cont">
+                                            <h3>Inicia y comparte tu diario médico</h3>
+                                         
+                                        </div>
+                                    </li>
+                                     <li>
+                                        <span><i class=""></i></span>
+                                        <div class="list-cont">
+                                            <h3>Crea tu perfil personal</h3>
+                                         
+                                        </div>
+                                    </li>
+                                       <li>
+                                        <span><i class=""></i></span>
+                                        <div class="list-cont">
+                                            <h3>Gestiona tu historial clínico</h3>
+                                         
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span><i class=""></i></span>
+                                        <div class="list-cont">
+                                            <h3>Consulta a tu especialista en cualquier momento</h3>
+                                         
+                                        </div>
+                                    </li>
+                                        <li>
+                                        <span><i class=""></i></span>
+                                        <div class="list-cont">
+                                            <h3>Únete a nuestros clubes de salud</h3>
+                                         
+                                        </div>
+                                    </li>
+
+                                </ul>
+                            </div>
+                            <div id="shine-block-92-17" class="shine-block block-image_block col-md-4  clearfix">
+                                <div class="image-place triggerAnimation animated" data-animate="slideInUp"></div>
+                            </div>
+                            <div id="shine-block-92-18" class="shine-block block-feature_list col-md-4  clearfix">
+                                <ul class="feature-list triggerAnimation animated" data-animate="slideInRight">
+                                <h3>Especialistas</h3>
+                                    <li>
+                                        <span><i class=""></i></span>
+                                        <div class="list-cont">
+                                            <h3>Encuentra nuevos pacientes</h3>
+                                            
+                                        </div>
+                                    </li>
+
+
+
+                                    <li>
+                                        <span><i class=""></i></span>
+                                        <div class="list-cont">
+                                            <h3>Amplía tu portafolio de servicios</h3>
+                                      
+                                        </div>
+                                    </li>
+                                        <li>
+                                        <span><i class=""></i></span>
+                                        <div class="list-cont">
+                                            <h3>Ofrece consultas online</h3>
+                                      
+                                        </div>
+                                    </li>
+                                          <li>
+                                        <span><i class=""></i></span>
+                                        <div class="list-cont">
+                                            <h3>Realiza seguimiento personalizado a tus pacientes</h3>
+                                      
+                                        </div>
+                                    </li>
+                                          <li>
+                                        <span><i class=""></i></span>
+                                        <div class="list-cont">
+                                            <h3>Optimiza el uso de tu tiempo</h3>
+                                      
+                                        </div>
+                                    </li>
+                                          <li>
+                                        <span><i class=""></i></span>
+                                        <div class="list-cont">
+                                            <h3>Da respuesta oportuna a las inquietudes de tus pacientes</h3>
+                                      
+                                        </div>
+                                    </li>
+                                         
+
+
+
+
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="blog-section section-content clearfix">
+                <div class="title-section">
+                    <div class="container triggerAnimation animated" data-animate="bounceIn">
+                        <h1>Últimas Entradas</h1>
+                        <p>Información a tu Servicio</p>
+                    </div>
+                </div>
+
+                <div class="">
+                    <div class="container  triggerAnimation animated" data-animate="fadeInUp">
+                        <div class="row ">
+
+
+                            <div id="owl-demo2" class="owl-carousel owl-theme">
+
+                                <div class="item blog-post">
+
+                                    <img class="img-responsive" width="350" height="200" src="http://demo.qkthemes.com/medicine/wp-content/uploads/bfi_thumb/blog10-2wu6jlz6c61fl18tu0dh4w.jpg" alt="ALIQUAM TINCIDUNT MAURIS EU RISUS." />
+
+                                    <div class="post-content">
+                                        <div class="post-date">
+                                            <p><span>23</span>05</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="item blog-post">
+
+                                    <img class="img-responsive" width="350" height="200" src="http://demo.qkthemes.com/medicine/wp-content/uploads/bfi_thumb/blog2-2wu6jm3p6gkmd2zp7vk4qo.jpg" alt="ALIQUAM TINCIDUNT MAURIS EU RISUS." />
+
+                                    <div class="post-content">
+                                        <div class="post-date">
+                                            <p><span>19</span>05</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="item blog-post">
+
+                                    <img class="img-responsive" width="350" height="200" src="http://demo.qkthemes.com/medicine/wp-content/uploads/bfi_thumb/blog1-2wu6jlunhvi8szhyg56tj4.jpg" alt="ALIQUAM TINCIDUNT MAURIS EU RISUS." />
+
+                                    <div class="post-content">
+                                        <div class="post-date">
+                                            <p><span>19</span>05</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="item blog-post">
+
+                                    <div class="flexslider">
+                                        <ul class="slides">
+                                            <li>
+                                                <img width="350" height="200" src="http://demo.qkthemes.com/medicine/wp-content/uploads/bfi_thumb/blog1-2wu6jlunhvi8szhyg56tj4.jpg" alt="ALIQUAM TINCIDUNT MAURIS EU RISUS." />
+                                            </li>
+                                            <li>
+                                                <img width="350" height="200" src="http://demo.qkthemes.com/medicine/wp-content/uploads/bfi_thumb/blog2-2wu6jm3p6gkmd2zp7vk4qo.jpg" alt="ALIQUAM TINCIDUNT MAURIS EU RISUS." />
+                                            </li>
+                                            <li>
+                                                <img width="350" height="200" src="http://demo.qkthemes.com/medicine/wp-content/uploads/bfi_thumb/blog3-2wu6jm880r3t54qklqqscg.jpg" alt="ALIQUAM TINCIDUNT MAURIS EU RISUS." />
+                                            </li>
+
+                                        </ul>
+                                    </div>
+
+                                    <div class="post-content">
+                                        <div class="post-date">
+                                            <p><span>19</span>05</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="item blog-post">
+
+                                    <div class="video-contaiter">
+                                        <iframe src="//player.vimeo.com/video/22884674" width="665" height="374" frameborder="0" title="Lamborghini &quot;Aventador&quot;" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                                    </div>
+
+                                    <div class="post-content">
+                                        <div class="post-date">
+                                            <p><span>19</span>05</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="item blog-post">
+
+                                    <img class="img-responsive" width="350" height="200" src="http://demo.qkthemes.com/medicine/wp-content/uploads/bfi_thumb/blog3-2wu6jm880r3t54qklqqscg.jpg" alt="ALIQUAM TINCIDUNT MAURIS EU RISUS." />
+
+                                    <div class="post-content">
+                                        <div class="post-date">
+                                            <p><span>19</span>05</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="item blog-post">
+
+                                    <div class="video-contaiter">
+                                        <iframe width="665" height="374" src="https://www.youtube.com/embed/YE7VzlLtp-4?feature=oembed" frameborder="0" allowfullscreen></iframe>
+                                    </div>
+
+                                    <div class="post-content">
+                                        <div class="post-date">
+                                            <p><span>19</span>05</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="item blog-post">
+
+
+                                    <div class="post-content">
+                                        <div class="post-date">
+                                            <p><span>19</span>05</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="buttons">
+                                <a class="owl-prev button-third" href="#"><i class="fa fa-angle-left"></i></a>
+                                <a class="button-third" href="http://demo.qkthemes.com/medicine/blog-masonry/">Ver todas las entradas</a>
+                                <a class="owl-next button-third" href="#"><i class="fa fa-angle-right"></i></a>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section style="background-color:#f9fafb " class="client-section section-content clearfix">
+                <div class="title-section">
+                    <div class="container triggerAnimation animated" data-animate="bounceIn">
+                        <h1>Nuestros Partners</h1>
+                       <!-- <p>Instituciones y Organizaciones que colaboran con nosotros.</p> -->
+                    </div>
+                </div>
+
+                <div class="">
+                    <div class="container  triggerAnimation animated" data-animate="shake">
+                        <div class="row ">
+
+                            <ul class="bxslider">
+                            
+                                <li>
+                                    <ul class="client-list">
+                                    
+                                        <li>
+                                            <a href="#">
+                                                <img alt="" src="http://demo.qkthemes.com/medicine/wp-content/uploads/2014/05/client6.png">
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <img alt="" src="http://demo.qkthemes.com/medicine/wp-content/uploads/2014/05/client5.png">
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <img alt="" src="http://demo.qkthemes.com/medicine/wp-content/uploads/2014/05/client4.png">
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <img alt="" src="http://demo.qkthemes.com/medicine/wp-content/uploads/2014/05/client3.png">
+                                            </a>
+                                        </li>
+                                         
+                                      
+                                        <li>
+                                            <a href="http://www.clidiabetes.com/">
+                                                <img alt="" src="https://s3.amazonaws.com/hubsalud/registration/img/client2.png">
+                                            </a>
+                                        </li>
+                                       
+                                       
+                                    </ul>
+                                </li>
+                                    </ul>
+                                </li>
+                                
+                          
+
+
+                            </ul>
+
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- End content -->
+
+        <!-- footer
+			================================================== -->
+        <footer>
+            <div class="social-section">
+                <ul class="social-icons">
+                    <li><a class="facebook" href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
+                    </li>
+                    <li><a class="twitter" href=""><i class="fa fa-twitter"></i></a>
+                    </li>
+                    <li><a class="rss" href="#"><i class="fa fa-rss"></i></a>
+                    </li>
+                    <li><a class="google" href="https://plus.google.com"><i class="fa fa-google-plus"></i></a>
+                    </li>
+                    <li><a class="linkedin" href="https://www.linkedin.com/"><i class="fa fa-linkedin"></i></a>
+                    </li>
+                    <li><a class="pinterest" href="https://www.pinterest.com/"><i class="fa fa-pinterest"></i></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="up-footer">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-md-3 triggerAnimation animated" data-animate="fadeInLeft">
+
+                            <aside id="text-3" class="widget widget_text">
+                                <h1>Quienes somos</h1>	
+                                <div class="textwidget">
+                                    <div class=" footer-widget text-widget">
+                                        <p>Hub Salud es una plataforma web, desarrollada por Digital Smark</p>
+                                        <p>Tecnología al servicio de la salud</p>
+
+                                        <img src={% static "registration/img/LogoTransparencia.png" %} alt="">
+                                    </div>
+                                </div>
+                            </aside>
+                        </div>
+
+                        <div class="col-md-3 triggerAnimation animated" data-animate="fadeInUp">
+                            <aside id="tweets-widget-2" class="widget footer-widget footer-widget latest-tweets">
+                                <h1>Últimos Tweets.</h1>	
+                                <div class="footer-widget tweets-widget">
+                                    <ul>
+                                        <li>
+
+
+                                    </ul>
+                                </div>
+                            </aside>
+                        </div>
+
+                        <div class="col-md-3 triggerAnimation animated" data-animate="fadeInRight">
+
+                            <aside id="text-5" class="widget footer-widget widget_text">
+                                <h1>Prensa</h1>	
+                                <div class="textwidget">
+                            </aside>
+                            <aside id="text-5" class="widget footer-widget widget_text">
+                                <h1>Blog</h1>
+                                <div class="textwidget">
+                            </aside>
+                            <aside id="text-5" class="widget footer-widget widget_text">
+                                <h1>Status</h1>
+                                <div class="textwidget">
+                            </aside>
+                            </div>
+
+                            <div class="col-md-3 triggerAnimation animated" data-animate="fadeInDown">
+
+                                <aside id="text-4" class="widget footer-widget widget_text">
+                                    <h1>Ayuda</h1>
+                                    <div class="textwidget">
+                                </aside>
+                                <aside id="text-4" class="widget footer-widget widget_text">
+                                    <h1>Contactar</h1>
+                                    <div class="textwidget">
+                                </aside>
+
+
+                                </div>
+
+                                </div>
+                                <div class="footer-line">
+                                    <p>Powered by Digitalsmark Latinoamérica | Copyright © 2002 - 2015 &middot; <a href="#">Privacidad</a> &middot; <a href="#">Terminos de uso</a>
+                                    </p>
+                                </div>
+                            </div>
+                            </div>
+
+        </footer>
+        <!-- End footer -->
+        </div>
+        <!-- End Container -->
+
+      
+        <script type="text/javascript">
+            $(function() {
+                $('#sti-menu').iconmenu();
+            });
+        </script>
+        <script type='text/javascript' src='http://demo.qkthemes.com/medicine/wp-content/plugins/contact-form-7/includes/js/jquery.form.min.js?ver=3.50.0-2014.02.05'></script>
+        <script type='text/javascript'>
+            /* <![CDATA[ */
+            var _wpcf7 = {
+                "loaderUrl": "http:\/\/demo.qkthemes.com\/medicine\/wp-content\/plugins\/contact-form-7\/images\/ajax-loader.gif",
+                "sending": "Sending ..."
+            };
+            /* ]]> */
+        </script>
+        <script type='text/javascript' src='http://demo.qkthemes.com/medicine/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=3.8.1'></script>
+        <script type='text/javascript' src='http://demo.qkthemes.com/medicine/wp-includes/js/comment-reply.min.js?ver=3.9.1'></script>
+        <script type='text/javascript' src='http://demo.qkthemes.com/medicine/wp-content/themes/marble/js/bootstrap.js?ver=3.9.1'></script>
+        <script type='text/javascript' src='http://demo.qkthemes.com/medicine/wp-content/themes/marble/js/jquery.magnific-popup.min.js?ver=3.9.1'></script>
+        <script type='text/javascript' src='http://demo.qkthemes.com/medicine/wp-content/themes/marble/js/jquery.bxslider.min.js?ver=3.9.1'></script>
+        <script type='text/javascript' src='http://demo.qkthemes.com/medicine/wp-content/themes/marble/js/jquery.flexslider.js?ver=3.9.1'></script>
+        <script type='text/javascript' src='http://demo.qkthemes.com/medicine/wp-content/themes/marble/js/jquery.appear.js?ver=3.9.1'></script>
+        <script type='text/javascript' src='http://demo.qkthemes.com/medicine/wp-content/themes/marble/js/jquery.stellar.min.js?ver=3.9.1'></script>
+        <script type='text/javascript' src='http://demo.qkthemes.com/medicine/wp-content/themes/marble/js/jquery.imagesloaded.min.js?ver=3.9.1'></script>
+        <script type='text/javascript' src='http://demo.qkthemes.com/medicine/wp-content/themes/marble/js/jquery.isotope.min.js?ver=3.9.1'></script>
+        <script type='text/javascript' src='http://demo.qkthemes.com/medicine/wp-content/themes/marble/js/retina-1.1.0.min.js?ver=3.9.1'></script>
+        <script type='text/javascript' src='http://demo.qkthemes.com/medicine/wp-content/themes/marble/js/plugins-scroll.js?ver=3.9.1'></script>
+        <script type='text/javascript' src='http://demo.qkthemes.com/medicine/wp-content/themes/marble/js/waypoint.min.js?ver=3.9.1'></script>
+        <script type='text/javascript' src='http://demo.qkthemes.com/medicine/wp-content/themes/marble/js/jquery.infinitescroll.min.js?ver=3.9.1'></script>
+        <script type='text/javascript' src='http://demo.qkthemes.com/medicine/wp-content/themes/marble/js/owl.carousel.min.js?ver=3.9.1'></script>
+        <script type='text/javascript' src='http://demo.qkthemes.com/medicine/wp-content/themes/marble/js/jquery.countTo.js?ver=3.9.1'></script>
+        <script type='text/javascript' src='http://demo.qkthemes.com/medicine/wp-content/themes/marble/js/jflickrfeed.min.js?ver=3.9.1'></script>
+        <script type='text/javascript' src='http://maps.google.com/maps/api/js?sensor=false&#038;ver=3.9.1'></script>
+        <script type='text/javascript' src='http://demo.qkthemes.com/medicine/wp-content/themes/marble/js/gmap3.min.js?ver=3.9.1'></script>
+        <script type='text/javascript' src='http://demo.qkthemes.com/medicine/wp-content/themes/marble/js/script.js?ver=3.9.1'></script>
+
+        <script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 947339655;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/947339655/?value=0&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+</body>

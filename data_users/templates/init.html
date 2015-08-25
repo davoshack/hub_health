@@ -1,0 +1,165 @@
+{% extends "admin.html" %}
+
+{% block title %}
+ Inicio
+{% endblock %}
+
+{% block content %}
+<!-- Right side column. Contains the navbar and content of the page -->
+           <aside class="right-side">                
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Inicio
+      <small>todo</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-chevron-circle-right"></i> Inicio</a></li>
+      <li class="active">todo</li>
+    </ol>
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+              {% if messages %}
+                    {% for message in messages %}
+                   
+                    <div {% if message.tags == "success" %} class="alert alert-success alert-dismissable" {% endif %}>
+                                        <i class="fa fa-thumbs-o-up"></i>
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                        </b> {{message}}
+                                    </div>
+                    {% endfor %}
+                    {% endif %}
+ 
+       <div class="row">
+                    <div class="col-md-6">
+                            <div class="box box-info">
+                                <div class="box-header">
+                                    <i class="fa fa-arrow-circle-right"></i>
+                                    <h3 class="box-title">Primeros Pasos</h3>
+                                  
+                                </div><!-- /.box-header -->
+                                {% if type_user_tag == 'Especialista' %} 
+                                <div class="box-body">
+<div class="alert alert-info" role="alert"><i class="fa fa-info"></i><h3>Configurar Datos Personales</h3><a href={% url 'account_edit_profile' %}>Actualizar <i class="fa fa-arrow-circle-right"></i></a></div>
+
+{% if professional %}
+<div class="alert alert-success" role="alert"><i class="fa fa-check"></i><h3>Configurar Datos Profesionales </h3><a href={% url 'specialist_create_professional' %}>Adicionar <i class="fa fa-arrow-circle-right"></i></a></div>
+{% else %}
+<div class="alert alert-warning" role="alert"><i class="fa fa-warning"></i><h3>Configurar Datos Profesionales </h3><a href={% url 'specialist_create_professional' %}>Iniciar <i class="fa fa-arrow-circle-right"></i></a></div>
+{% endif %}
+
+{% if academic %}
+<div class="alert alert-success" role="alert"><i class="fa fa-check"></i><h3>Configurar Datos Académicos </h3><a href={% url 'specialist_create_academic' %}>Adicionar <i class="fa fa-arrow-circle-right"></i></a></div>
+{% else %}
+<div class="alert alert-warning" role="alert"><i class="fa fa-warning"></i><h3>Configurar Datos Académicos </h3><a href={% url 'specialist_create_academic' %}>Iniciar <i class="fa fa-arrow-circle-right"></i></a></div>
+{% endif %}
+
+{% if employment %}
+<div class="alert alert-success" role="alert"><i class="fa fa-check"></i><h3>Configurar Datos Laborales </h3><a href={% url 'specialist_create_employmenthistory' %}>Adicionar <i class="fa fa-arrow-circle-right"></i></a></div>
+{% else %}
+<div class="alert alert-warning" role="alert"><i class="fa fa-warning"></i><h3>Configurar Datos Laborales </h3><a href={% url 'specialist_create_employmenthistory' %}>Iniciar <i class="fa fa-arrow-circle-right"></i></a></div>
+{% endif %}
+
+
+
+                                    
+                                </div><!-- /.box-body -->
+                                {% else %}
+        <div class="box-body">
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info"></i><h3>Configurar Datos Personales</h3><a href={% url 'account_edit_profile' %}>Actualizar <i class="fa fa-arrow-circle-right"></i></a></div>
+{% if glycemic %}
+<div class="alert alert-success" role="alert"><i class="fa fa-check"></i><h3>Configurar Diario Médico - Glicemia </h3><a href={% url 'account_create_glycemia' %}>Adicionar <i class="fa fa-arrow-circle-right"></i></a></div>
+{% else %}
+<div class="alert alert-warning" role="alert"><i class="fa fa-warning"></i><h3>Configurar Diario Médico - Glicemia </h3><a href={% url 'account_create_glycemia' %}>Iniciar <i class="fa fa-arrow-circle-right"></i></a></div>
+{% endif %}
+{% if colesterol %}
+<div class="alert alert-success" role="alert"><i class="fa fa-check"></i><h3>Configurar Diario Médico - Perfil Lipídico </h3><a href={% url 'account_create_colesterol' %}>Adicionar <i class="fa fa-arrow-circle-right"></i></a></div>
+{% else %}
+<div class="alert alert-warning" role="alert"><i class="fa fa-warning"></i><h3>Configurar Diario Médico - Perfil Lipídico </h3><a href={% url 'account_create_colesterol' %}>Iniciar <i class="fa fa-arrow-circle-right"></i></a></div>
+{% endif %}
+{% if blood_pressure %}
+<div class="alert alert-success" role="alert"><i class="fa fa-check"></i><h3>Configurar Diario Médico - Presión Arterial </h3><a href={% url 'account_create_blood_pressure' %}>Adicionar <i class="fa fa-arrow-circle-right"></i></a></div>
+{% else %}
+<div class="alert alert-warning" role="alert"><i class="fa fa-warning"></i><h3>Configurar Diario Médico - Presión Arterial </h3><a href={% url 'account_create_blood_pressure' %}>Iniciar <i class="fa fa-arrow-circle-right"></i></a></div>
+{% endif %}
+{% if weight %}
+<div class="alert alert-success" role="alert"><i class="fa fa-check"></i><h3>Configurar Diario Médico - Peso </h3><a href={% url 'account_create_weight' %}>Adicionar <i class="fa fa-arrow-circle-right"></i></a></div>
+{% else %}
+<div class="alert alert-warning" role="alert"><i class="fa fa-warning"></i><h3>Configurar Diario Médico - Peso </h3><a href={% url 'account_create_weight' %}>Iniciar <i class="fa fa-arrow-circle-right"></i></a></div>
+{% endif %}
+{% if size %}
+<div class="alert alert-success" role="alert"><i class="fa fa-check"></i><h3>Configurar Diario Médico - Talla </h3><a href={% url 'account_create_size' %}>Adicionar <i class="fa fa-arrow-circle-right"></i></a></div>
+{% else %}
+<div class="alert alert-warning" role="alert"><i class="fa fa-warning"></i><h3>Configurar Diario Médico - Talla </h3><a href={% url 'account_create_size' %}>Iniciar <i class="fa fa-arrow-circle-right"></i></a></div>
+{% endif %}
+{% if hemoglobin %}
+<div class="alert alert-success" role="alert"><i class="fa fa-check"></i><h3>Configurar Diario Médico - Hemoglobina </h3><a href={% url 'account_create_hemoglobin' %}>Adicionar <i class="fa fa-arrow-circle-right"></i></a></div>
+{% else %}
+<div class="alert alert-warning" role="alert"><i class="fa fa-warning"></i><h3>Configurar Diario Médico - Hemoglobina </h3><a href={% url 'account_create_hemoglobin' %}>Iniciar <i class="fa fa-arrow-circle-right"></i></a></div>
+{% endif %}
+{% if emotional %}
+<div class="alert alert-success" role="alert"><i class="fa fa-check"></i><h3>Configurar Diario Médico - Estados de Ánimo </h3><a href={% url 'account_create_emotionalstates' %}>Adicionar <i class="fa fa-arrow-circle-right"></i></a></div>
+{% else %}
+<div class="alert alert-warning" role="alert"><i class="fa fa-warning"></i><h3>Configurar Diario Médico - Estados de Ánimo </h3><a href={% url 'account_create_emotionalstates' %}>Iniciar <i class="fa fa-arrow-circle-right"></i></a></div>
+{% endif %}
+{% if general_symptoms %}
+<div class="alert alert-success" role="alert"><i class="fa fa-check"></i><h3>Configurar Diario Médico - Síntomas Generales </h3><a href={% url 'account_create_generalsymptoms' %}>Adicionar <i class="fa fa-arrow-circle-right"></i></a></div>
+{% else %}
+<div class="alert alert-warning" role="alert"><i class="fa fa-warning"></i><h3>Configurar Diario Médico - Síntomas Generales </h3><a href={% url 'account_create_generalsymptoms' %}>Iniciar <i class="fa fa-arrow-circle-right"></i></a></div>
+{% endif %}
+{% if glycemics_symptoms %}
+<div class="alert alert-success" role="alert"><i class="fa fa-check"></i><h3>Configurar Diario Médico - Síntomas Glicémicos </h3><a href={% url 'account_create_glycemicsymptoms' %}>Adicionar <i class="fa fa-arrow-circle-right"></i></a></div>
+{% else %}
+<div class="alert alert-warning" role="alert"><i class="fa fa-warning"></i><h3>Configurar Diario Médico - Síntomas Glicémicos </h3><a href={% url 'account_create_glycemicsymptoms' %}>Iniciar <i class="fa fa-arrow-circle-right"></i></a></div>
+{% endif %}
+{% if sex == 'Mujer' %}
+{% if gyneco %}
+<div class="alert alert-success" role="alert"><i class="fa fa-check"></i><h3>Configurar Diario Médico - Variables Ginecológicas </h3><a href={% url 'account_create_gyneco' %}>Adicionar <i class="fa fa-arrow-circle-right"></i></a></div>
+{% else %}
+<div class="alert alert-warning" role="alert"><i class="fa fa-warning"></i><h3>Configurar Diario Médico - Variables Ginecológicas </h3><a href={% url 'account_create_gyneco' %}>Iniciar <i class="fa fa-arrow-circle-right"></i></a></div>
+{% endif %}
+{% endif %}
+
+                                    
+                                </div><!-- /.box-body -->
+                                {% endif %}
+                            </div><!-- /.box -->
+                        </div>
+                     <div class="col-md-6">
+                            <div class="box box-info">
+                                <div class="box-header">
+                                    <i class="fa fa-link"></i>
+                                    <h3 class="box-title">Tutoriales</h3>
+                                    
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                    <div class="embed-responsive embed-responsive-16by9">
+                                    <iframe width="400" height="200" src="https://www.youtube.com/embed/vFyFCHxyD1k" frameborder="0" allowfullscreen></iframe>
+                                    </div>
+                                    <br>
+                                      <div class="embed-responsive embed-responsive-16by9">
+                                    <iframe width="400" height="200" src="https://www.youtube.com/embed/vFyFCHxyD1k" frameborder="0" allowfullscreen></iframe>
+                                    </div>
+                                </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+                        </div> 
+               
+                     
+        </div><!-- /.row -->
+ 
+        <div class="row">
+                   
+                                
+        </div><!-- /.row -->
+
+
+
+
+
+</section><!-- /.content -->
+</aside><!-- /.right-side -->
+
+{% endblock %}

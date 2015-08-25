@@ -1,0 +1,59 @@
+
+{% extends "admin.html" %}
+{% load url from future %}
+{% load i18n %}{% load postman_tags %}
+{% block content %}
+{% load widget_tweaks %}
+<aside class="right-side">
+       <section class="content-header">
+                    <h1>
+                        Mensajes
+                         <small>{% block pm_folder_title %}{% endblock %}</small>
+                    
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-home"></i> Mensajes</a></li>
+                    
+                       
+                    </ol>
+                </section>
+    <section class="content">
+    <div class="row">
+<div class="col-md-6">
+              <div class="box box-primary">
+                <div class="box-header">
+                  <h3 class="box-title">Redactar</h3>
+                                    <div class="box-tools pull-right">
+                                       <a href={% url 'postman_inbox' %}> <button class="btn btn-primary "><i class="fa fa-edit"></i> Cancelar</button></a>
+                                    </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+<div id="postman">
+
+<form action="{% if next_url %}?next={{ next_url|urlencode }}{% endif %}" method="post">{% csrf_token %}
+<table>
+{% block pm_write_recipient %}{% endblock %}
+ <div class="form-group">                                  
+                                           <label>Destinatario</label>
+                                            {{ form.recipients|add_error_class:"class:alert alert-danger"  }}
+                                        </div>
+                                        <div class="form-group">
+                                             <label>Asunto</label>
+                                           {{ form.subject|add_error_class:"class:alert alert-danger"  }}
+                                        </div>
+                                        <div class="form-group">
+                                             <label>Mensaje</label>
+                                           {{ form.body|add_error_class:"class:alert alert-danger"  }}
+                                        </div>
+</table>
+<button type="submit" class="btn btn-outline btn-info">{% trans "Send" %}</button>
+</form>
+</div>
+</div><!-- /.box-body -->
+              </div><!-- /.box -->
+            </div>
+
+    </div>
+    </section>
+</aside>
+{% endblock %}

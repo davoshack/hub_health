@@ -1,0 +1,62 @@
+{% extends "admin.html" %}
+
+{% block title %}
+ Diario Médico - Estados
+{% endblock %}
+
+{% block content %}
+{% load widget_tweaks %}
+<!-- Right side column. Contains the navbar and content of the page -->
+            <aside class="right-side">                
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        Diario médico
+                        <small>estados de ánimo</small>
+                    </h1>
+                   
+                    <ol class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-arrow-circle-right"></i> Diario médico</a></li>
+                        <li>estados de ánimo</li>
+                        <li class="active">eliminar</li>
+                    </ol>
+                </section>
+
+                <!-- Main content -->
+                <section class="content">
+               
+                 <div class="row">
+                          <div class="col-md-4">
+                            <div class="box box-danger">
+                                <div class="box-header">
+                                    <h3 class="box-title">Eliminar</h3>
+                                    <div class="box-tools pull-right">
+                                    <a href={% url 'account_emotionalstates' %}>
+                                        <button class="btn btn-primary "><i class="fa fa-backward"></i> Regresar</button></a>
+                                    </div>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                    <div class="alert alert-warning alert-dismissable">
+                                        <i class="fa fa-warning"></i>
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                        </b> Está seguro que desea eliminar este ítem? <form enctype="multipart/form-data" class="form-horizontal" method="POST">{% csrf_token %}
+               
+                           <input type="submit" value="Eliminar" class="btn btn-warning">
+              
+                    
+                                           </form>
+              
+                                    </div>
+  
+                                   
+                                </div><!-- /.box-body -->
+                            </div>
+                            </div>
+                      
+                        </div><!-- ./col -->
+                </div>
+                   
+                </section><!-- /.content -->
+            </aside><!-- /.right-side -->
+
+{% endblock %}

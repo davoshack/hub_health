@@ -1,0 +1,102 @@
+{% extends "admin.html" %}
+
+{% block title %}
+ Utilidades - Medicamentos
+{% endblock %}
+
+{% block content %}
+{% load widget_tweaks %}
+<!-- Right side column. Contains the navbar and content of the page -->
+            <aside class="right-side">                
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                       Utilidades
+                        <small>medicamentos</small>
+              
+                    </h1>
+                   
+                    <ol class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-arrow-circle-right"></i> Utilidades</a></li>
+                        <li>medicamentos</li>
+                        <li class="active">todo</li>
+
+                    </ol>
+                </section>
+
+                <!-- Main content -->
+                <section class="content">
+                     {% if messages %}
+                    {% for message in messages %}
+                   
+                    <div {% if message.tags == "success" %} class="alert alert-success alert-dismissable" {% endif %}>
+                                        <i class="fa fa-thumbs-o-up"></i>
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                        </b> {{message}}
+                                    </div>
+                    {% endfor %}
+                    {% endif %}
+               <div class="row">
+                          <div class="col-md-12">
+                   <div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title">Medicamentos</h3>
+                                     <div class="box-tools pull-right">
+                                       <a href={% url 'utilities_create_drugs' %}> <button class="btn btn-primary "><i class="fa fa-edit"></i> Agregar</button></a>
+                                    </div>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                <div class="box-body table-responsive no-padding">
+                                {% if object_list %}
+                                    <table class="table table-hover">
+                                        <tbody><tr>
+                                            <th>Nombre</th>
+                                            <th>Concentración</th>
+                                            <th>Tipo de concentración</th>
+                                            <th>Frecuencia de administración</th>
+                                            <th>Fecha de inicio</th>
+                                            <th>Fecha de finalización</th>
+                                            <th>Nota</th>
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                         {% for drugs in object_list %}
+                                    
+                                        <tr>
+                                   
+                                            <td>{{drugs.name}}</td>
+                                            <td>{{drugs.concentration}}</td>
+                                            <td>{{drugs.concentration_type}}</td>
+                                           
+                                           
+                                            <td>{{drugs.periodicity_administration}}</td>
+                                      
+                                            <td>{{drugs.date_init}}</td>
+                                            <td>{{drugs.date_final}}</td>
+                                            <td>{{drugs.note}}</td>
+                                            <td>
+                                                <a href={% url 'utilities_update_drugs' drugs.id %}> <span class="badge bg-blue">Actualizar</span></a>
+                                            </td>
+                                            <td><a href={% url 'utilities_delete_drugs' drugs.id %}> <span class="badge bg-red">Eliminar</span></a></td>
+                                        </tr>
+                                   
+
+                                        {% endfor %}
+                                       
+                                    </tbody>
+                                    </table>
+                                    </div>
+                                    {% else %}
+                                    <p class="alert alert-warning"><i class="fa fa-warning"></i>No existen registro, haz clic en "Agregar"</p>
+                                    {% endif %}
+                                </div><!-- /.box-body -->
+                            </div>
+                            </div>
+                      
+                        </div><!-- ./col -->
+                </div>
+                   
+                </section><!-- /.content -->
+            </aside><!-- /.right-side -->
+
+{% endblock %}

@@ -1,0 +1,131 @@
+{% extends 'admin.html' %}
+
+{% load url from future %}
+
+{% load pybb_tags i18n %}
+
+{% block title %}{{ topic }}{% endblock %}
+
+{% block extra_head %}
+    {{ block.super }}
+    {{ form.media.css }}
+{% endblock %}
+{% block extra_script %}
+    {{ block.super }}
+    {{ form.media.js }}
+    <script type="text/javascript" src="{{ STATIC_URL }}pybb/js/jquery.formset.min.js"></script>
+{% endblock %}
+
+{% block breadcrumb %}
+    {% with object=topic %}
+        {% include "pybb/breadcrumb.html" %}
+    {% endwith %}
+{% endblock %}
+
+{% block content %}
+<aside class="right-side">                
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Club
+      <small>mensajes</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-arrow-circle-right"></i> Club</a></li>
+      <li class="active">mensajes</li>
+    </ol>
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+   <div class="container-fluid">
+    <div class="navbar-header">
+    <a href={% url 'account_home_club' forum_id %}><button type="button" class="btn btn-default navbar-btn"><i class="fa fa-backward"> Regresar a tópicos</i></button></a>
+      
+                           
+                        
+    </div>
+  
+    
+  </div>
+              {% if messages %}
+                    {% for message in messages %}
+                   
+                    <div {% if message.tags == "success" %} class="alert alert-success alert-dismissable" {% endif %}>
+                                        <i class="fa fa-thumbs-o-up"></i>
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                        </b> {{message}}
+                                    </div>
+                    {% endfor %}
+                    {% endif %}
+   <div class='row'>
+    <div class='col-md-8'>
+  
+      
+   
+    </div>
+  </div>
+<br>
+<div class='row'>
+<div class="col-md-8">
+<div class="box box-success">
+                                <div class="box-header">
+                                    <div class="box-title"><i class="fa fa-comments-o"></i> {{ topic.name }}</div>
+                                    <div class="box-tools pull-right" data-toggle="tooltip" title="Status">
+                                        
+                                    </div>
+                                </div>
+                                <div class="box-body chat" id="chat-box">
+                                  {% with _('Posts') as label %}
+            {% include "pybb/pagination.html" %}
+        {% endwith %}
+
+        {% if topic.poll_type %}
+            {% include 'pybb/poll.html' %}
+        {% endif %}
+
+        <div class="posts">
+            {% if first_post %}{% ifnotequal first_post post_list.0 %}
+                {% with first_post as post %}
+                    <li class="first_post">{% include "pybb/post_template.html" %}</li>
+                {% endwith %}
+            {% endifnotequal %}{% endif %}
+            {% for post in post_list %}
+                {% cycle 'odd' 'even' as rowcolors silent %}
+                {% include "pybb/post_template.html" %}
+            {% endfor %}
+        </div>
+        <div>&nbsp;</div>
+        {% with _('Posts') as label %}
+            {% include "pybb/pagination.html" %}
+        {% endwith %}
+
+  
+
+        {% if user|pybb_may_create_post:topic %}
+            {% include "pybb/post_form.html" %}
+        {% else %}
+            {% if not user.is_authenticated %}
+                {% include 'pybb/_need_to_login_message.html' %}
+            {% endif %}
+        {% endif %}
+         {% if user.is_subscribed %}
+                        <a href="{% url 'pybb:delete_subscription' topic.id %}?from_topic">{% trans "Unsubscribe" %}</a>
+                    {% elif user|pybb_may_subscribe_topic:topic %}
+                        <a href="{% url 'pybb:add_subscription' topic.id %}">{% trans "Subscribe" %}</a>
+                    {% endif %}
+
+                                   
+                                    </div><!-- /.item -->
+                                </div><!-- /.chat -->
+                         
+                            </div>
+                  <!-- Custom Tabs (Pulled to the right) -->
+                 
+</div>
+</div>
+</section><!-- /.content -->
+</aside><!-- /.right-side -->
+
+    
+{% endblock %}

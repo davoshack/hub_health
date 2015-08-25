@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+{% load static from staticfiles %}  
+{% load widget_tweaks %}
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Hub Salud</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href={% static "registration/css/bootstrap.min.css" %} rel="stylesheet">
+    <link href={% static "registration/css/font-awesome.min.css" %} rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href={% static "registration/css/heroic-features.css" %} rel="stylesheet">
+   
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+
+
+    <!-- Page Content -->
+    <div class="container">
+      <a href="/"> <img src={% static "registration/img/LogoTransparencia.png" %}  alt=""></a>
+        <ul class="nav nav-pills pull-right">
+          <li class="active"><a href="/">Inicio</a></li>
+          <li><a href="/blog/" target="_blank">Blog</a></li>
+         
+        </ul>
+        <p>
+        </p>
+        <p>
+        </p>
+        <div class="row text-center">
+
+          <div class="col-md-6 col-sm-6 hero-feature">
+                <div class="thumbnail">
+            <img src={% static "registration/img/especialista.jpg" %} alt="">
+               <div class="caption">
+             
+                       {% if info_send %}
+                           <p class="alert alert-success">¡Gracias Dr@ <b>{{first_name}} {{last_name}}</b> por mostrar interés en nuestra plataforma. En menos de 24 horas le estaremos enviando un correo a <b>{{email}}</b> con las instrucciones necesarias para completar el proceso de registro!</p>
+                       {% else %}
+                        <p class="alert alert-info">¡Solicite acceso como especialista enviando el siguiente formulario a nuestra plataforma!</p>
+                       <br>
+                       <form enctype="multipart/form-data" method="POST" action=".">{% csrf_token %} 
+
+                     {{ form.non_field_errors }}
+                       <!-- email -->
+                       <div class="row">
+
+  <div class="col-xs-2">
+   
+  </div>
+  <div class="col-xs-8">
+             <div class="form-group">
+
+
+
+    <div class="input-group">
+    <span class="input-group-addon"><i class="fa fa-envelope-square"></i></span>
+     {{ form.email|add_error_class:"class:alert alert-danger" }}
+
+  </div>
+  </div>
+  </div>  
+  </div>
+  <!-- end email -->
+  <!-- first name -->   
+  <div class="row">
+  <div class="col-xs-2">
+   
+  </div>
+  <div class="col-xs-8">
+             <div class="form-group">
+                     
+            
+
+    <div class="input-group">
+    <span class="input-group-addon">Nombres:</span>
+     {{ form.first_name|add_error_class:"class:alert alert-danger"  }}
+
+  </div>
+  </div>
+  </div>  
+  </div>
+  <!-- end first name -->
+  <!-- last name -->
+  <div class="row">
+  <div class="col-xs-2">
+   
+  </div>
+  <div class="col-xs-8">
+             <div class="form-group">
+                     
+                
+
+    <div class="input-group">
+    <span class="input-group-addon">Apellidos:</span>
+     {{ form.last_name|add_error_class:"class:alert alert-danger" }}
+
+  </div>
+  </div>
+  </div>  
+  </div>
+  <!--end last name -->
+  <!-- profession -->
+  <div class="row">
+  <div class="col-xs-2">
+   
+  </div>
+  <div class="col-xs-8">
+             <div class="form-group">
+                     
+          
+
+    <div class="input-group">
+    <span class="input-group-addon">Profesión:</span>
+     {{ form.profession|add_error_class:"class:alert alert-danger" }}
+
+  </div>
+  </div>
+  </div>  
+  </div>
+                        
+            
+                       <p></p>
+                       {% endif %}
+                        <a><button type="submit" class="btn btn-lg btn-success">
+                            <i class="fa fa-user-md fa-2x pull-left"></i>
+                           
+                            Especialista
+                        </button></a>
+              
+                    </div>     
+                 
+              </form>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-sm-6 hero-feature">
+                <div class="thumbnail">
+                    <img src={% static "registration/img/paciente.jpg" %} alt="">
+                    <div class="caption">
+                       <p class="alert alert-info">¡Regístrese en unos pocos pasos y <br>empiece a utilizar nuestros servicios sin costo alguno!</p>
+                       <a href={% url 'registration_patient_register' %}><button type="submit" class="btn btn-lg btn-success">
+                            <i class="fa fa-user fa-2x pull-left"></i>
+                
+                            Paciente
+                        </button></a>
+              
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p class="pull-left">&copy; Powered by Digitalsmark Latinoamérica | Copyright © 2002 - 2015 &middot; <a href="#">Privacidad</a> &middot; <a href="#">Terminos de uso</a> &middot; </p><p class="pull-left"> <a href="#" target="_blank"><i></i> YouTube </a> &middot; <a href="#" target="_blank"><i></i> Linkedin </a> &middot; <a href="#" target="_blank"><i></i> Facebook </a> &middot; <a href="#" target="_blank"><i></i> Twitter </a> &middot; <a href="/admin/" target="_blank"><i></i> Admin </a></p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+ <script type="text/javascript" src="{% static "registration/js/jquery-1.11.2.min.js" %}"></script>
+ <script type="text/javascript" src="{% static "registration/js/bootstrap.js" %}"></script>
+</body>
+
+</html>

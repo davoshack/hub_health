@@ -1,0 +1,91 @@
+{% extends "admin.html" %}
+
+{% block title %}
+ Perfil - Especialista
+{% endblock %}
+
+{% block content %}
+{% load widget_tweaks %}
+{% load static from staticfiles %}
+<!-- Right side column. Contains the navbar and content of the page -->
+            <aside class="right-side">                
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        Perfil
+                        <small>datos personales</small>
+                        <small>especialista</small>
+                    </h1>
+                   
+                    <ol class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-arrow-circle-right"></i> Perfil</a></li>
+                        <li>datos personales</li>
+                        <li class="active">especialista</li>
+                    </ol>
+                </section>
+
+                <!-- Main content -->
+                <section class="content">
+                <section class="content invoice">                    
+                    <!-- title row -->
+                    <div class="row">
+                         <div class="col-md-3">
+                            <div class="box box-info">
+                               
+                                <div class="box-body">
+                            
+                        <a href="#" class="thumbnail">
+                           <img src={{avatar.url}} class="img-rounded" alt="User Image" />
+                        </a> 
+                          </div>
+                          </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="box box-info">
+                                <div class="box-header">
+                                    <i class="fa fa-user"></i>
+                                    <h3 class="box-title">Datos Personales</h3>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                              
+                                {% for usr in names %}
+                            <h3><span class="label label-info"><i class="fa fa-stethoscope"></i>  {{usr.first_name}} {{usr.last_name}}</span></h3>
+                            {% endfor %}
+                            {% for usr in names %}
+                                  <a href={% url 'specialist_profile_public' usr.id %} target="_blank"><h3><span class="label label-primary"><i class="fa fa-external-link-square"></i> Perfil público </span></h3></a>
+                            {% endfor %}
+                            <br>
+                          
+                           </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+                        </div>
+                          <div class="col-md-3">
+                            <div class="box box-info">
+                                   <div class="box-header">
+                                    <i class="fa fa-medkit"></i>
+                                    <h3 class="box-title">Clubes</h3>
+                           
+                                  
+                                </div><!-- /.box-header -->
+                                 <div class="box-body">
+                                
+                                 {% for clubs in clubs %}
+                               
+                                 <h3><span class="label label-info">{{clubs}}</span></h3>
+                           
+                                
+                        
+                                 {% endfor %}
+                                
+                                 </div>
+                            </div>
+                            </div>
+                    </div>
+                    <br>
+                                   
+                </section>
+                   
+                </section><!-- /.content -->
+            </aside><!-- /.right-side -->
+
+{% endblock %}

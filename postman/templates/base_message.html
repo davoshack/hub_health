@@ -1,0 +1,46 @@
+{% extends "admin.html" %}
+{% load url from future %}
+{% load i18n %}{% load postman_tags %}
+{% block title %}{% trans "Messaging" %}{% endblock %}
+{% block extrahead %}{{ block.super }}
+<link type="text/css" media="all" rel="stylesheet" href="
+{# dj v1.4 #}{% load static %}{% static 'postman/css/postman.css' %}
+{# dj v1.3 #}{# {{ STATIC_URL }}postman/css/postman.css #}
+{# dj v1.2 #}{# {{ MEDIA_URL }}postman/css/postman.css #}
+" />{% endblock %}
+{% block content %}
+<aside class="right-side">
+                <!-- Main content -->
+                <section class="content">
+                     <div class="mailbox row">
+                        <div class="col-xs-12">
+          
+                            <div class="box box-solid">
+                                <div class="box-body">
+                       
+                                    </div><!-- /.row -->
+                      
+                           
+                            </div><!-- /.box -->
+                        </div><!-- /.col (MAIN) -->
+                    </div>           
+                    <!-- title row -->
+                    <div class="row">
+                       <ul id="postman_menu">{% postman_unread as unread_count %}
+ <a href="{% url 'postman_inbox' %}"><button type="button" class="btn btn-outline btn-info"><i class="fa fa-envelope"></i> Recibidos</button></a>
+ <li><a href="{% url 'postman_inbox' %}">&raquo;&nbsp;{% trans "Inbox" %}{% if unread_count %} <strong>({{ unread_count }})</strong>{% endif %}</a></li>
+ <li><a href="{% url 'postman_sent' %}">&raquo;&nbsp;{% trans "Sent Messages" %}</a></li>
+ <li><a href="{% url 'postman_write' %}">&raquo;&nbsp;{% trans "Write" %}</a></li>
+ <li><a href="{% url 'postman_archives' %}">&raquo;&nbsp;{% trans "Archives" %}</a></li>
+ <li><a href="{% url 'postman_trash' %}">&raquo;&nbsp;{% trans "Trash" %}</a></li>
+</ul>
+                             
+                    </div>
+
+                     
+           
+                   
+                </section><!-- /.content -->
+            </aside><!-- /.right-side -->
+
+{% endblock %}

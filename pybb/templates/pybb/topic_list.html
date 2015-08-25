@@ -1,0 +1,58 @@
+{% load i18n pybb_tags %}
+<div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title">Tópicos</h3>
+                                    <div class="box-tools">
+                                       
+                                    </div>
+                                </div><!-- /.box-header -->
+                                <div class="box-body table-responsive no-padding">
+                                    <table class="table table-hover">
+                                        <tbody>
+                                        <tr class="topic-row {% if topic.sticky %} sticky {% endif %} {% cycle "odd" "even" %} {% if topic.on_moderation %} on-moderation {% endif %}">
+                                            <th></th>
+                                            <th>{% trans "Posts" %}</th>
+                                            <th>{% trans "Views" %}</th>
+                                            <th>{% trans "Last post" %}</th>
+                                            
+                                        </tr>
+                                         {% for topic in topic_list|pybb_topic_unread:user %}
+                                        <tr>
+                                                <td class="topic-name{% if topic.unread %} topic-unread{% endif %}">
+                <div class="state-indicator"></div>
+                <a href="{{ topic.get_absolute_url }}">{{ topic.name|truncatewords:10 }}</a>
+                <a href="{{ topic.get_absolute_url }}?first-unread=1" class="first-unread-post-link" title="{% trans 'Go to first unread post' %}">⇨</a>
+                {% if topic.sticky %} &nbsp;[{% trans "Sticky" %}] {% endif %}
+                {% if topic.closed %} &nbsp;[{% trans "Closed" %}] {% endif %}
+                {% with topic|pybb_topic_inline_pagination as pages %}
+                    {% if pages|length > 1 %}
+                        <span class="mini-pagination">
+                            {% trans "pages" %}:
+                            {% for page in pages %}
+                                <span class="page">
+                                {% if page == "..." %}
+                                    ...
+                                {% else %}
+                                    <a href="{{ topic.get_absolute_url }}?page={{ page }}">{{ page }}</a>
+                                {% endif %}
+                                </span>
+                            {% endfor %}
+                        </span>
+                    {% endif %}
+                {% endwith %}
+            </td>
+                                            <td class="topic-post-count">
+                {{ topic.post_count }}
+            </td>
+            <td class="topic-view-count">
+                {{ topic|pybbm_calc_topic_views }}
+            </td>
+            <td class="topic-last-post">
+                {% include "pybb/topic_last_message_info.html" %}
+            </td>
+                                        </tr>
+                                        {% endfor %}
+                           </tbody></table>
+                     </div><!-- /.box-body -->
+             </div>
+

@@ -1,0 +1,141 @@
+{% extends "admin.html" %}
+
+{% block title %}
+ Perfil - Editar
+{% endblock %}
+
+{% block content %}
+{% load widget_tweaks %}
+<!-- Right side column. Contains the navbar and content of the page -->
+            <aside class="right-side">                
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        Perfil
+                        <small>datos personales</small>
+              
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-arrow-circle-right"></i> Perfil</a></li>
+                        <li>datos personales</li>
+                        <li class="active">editar</li>
+
+                    </ol>
+                </section>
+
+                <!-- Main content -->
+                <section class="content">
+                    
+               <div class="row">
+                          <div class="col-md-4">
+                            <div class="box box-primary">
+                                <div class="box-header">
+                                    <h3 class="box-title">Datos Personales</h3>
+                                </div><!-- /.box-header -->
+                                <!-- form start -->
+                                <form enctype="multipart/form-data" method="post" class="form-register" role="form">{% csrf_token %}
+                                    <div class="box-body">
+                                    {% if type_user == 'paciente' %}
+                                       <div class="form-group">                                  
+                                           <label>Resumen médico</label>
+                                            {{ form.patient_abstract|add_error_class:"class:alert alert-danger"  }}
+                                        </div>
+                                        <div class="form-group">
+                                             <label>Grupo sanguíneo</label>
+                                           {{ form.blood_group|add_error_class:"class:alert alert-danger"  }}
+                                        </div>
+                                    {% else %}
+                                        <div class="form-group">                                  
+                                           <label>Especialidad médica</label>
+                                            {{ form.medical_specialty|add_error_class:"class:alert alert-danger"  }}
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Énfasis</label>
+                                           {{ form.medical_emphasis|add_error_class:"class:alert alert-danger"  }}
+                                        </div>
+                                        <div class="form-group">
+                                             <label>Registro profesional</label>
+                                              <div class="input-group">
+                                              <span class="input-group-addon"><i class="fa fa-certificate"></i></span>
+                                              {{ form.professional_register|add_error_class:"class:alert alert-danger"  }}
+                                              </div>
+                                        </div>
+                                        <div class="form-group">
+                                             <label>Resumen profesional</label>
+                                           {{ form.professional_abstract|add_error_class:"class:alert alert-danger"  }}
+                                        </div>
+                                     {% endif %}
+                                         <div class="form-group">
+                                             <label>Género</label>
+                                           {{ form.sex|add_error_class:"class:alert alert-danger"  }}
+                                         </div>
+                                        <div class="form-group">
+                                             <label>Nacionalidad</label>
+                                           {{ form.nationality|add_error_class:"class:alert alert-danger"  }}
+                                        </div>
+                                        <div class="form-group">
+                                             <label>Fecha de nacimiento</label>
+                                              <div class="input-group">
+                                              <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                             {{ form.date_birth|add_error_class:"class:alert alert-danger"  }}
+                                             </div>
+                                        </div>
+                                         <div class="form-group">                                  
+                                           <label>Whatsapp</label>
+                                            {{ form.whatsapp|add_error_class:"class:alert alert-danger"  }}
+                                        </div>
+                                        <div class="form-group">
+                                             <label>Blog o sitio web</label>
+                                             <div class="input-group">
+                                             <span class="input-group-addon"><i class="fa fa-globe"></i></span>
+                                             {{ form.blog|add_error_class:"class:alert alert-danger"  }}
+                                             </div> 
+                                        </div>
+                                        <div class="form-group">
+                                             <label>Facebook</label>
+                                             <div class="input-group">
+                                             <span class="input-group-addon"><i class="fa fa-facebook"></i></span>
+                                             {{ form.facebook|add_error_class:"class:alert alert-danger"  }}
+                                             </div>
+                                        </div>
+                                        <div class="form-group">
+                                             <label>Twitter</label>
+                                             <div class="input-group">
+                                             <span class="input-group-addon"><i class="fa fa-twitter"></i></span>
+                                             {{ form.twitter|add_error_class:"class:alert alert-danger"  }}
+                                             </div>
+                                        </div>
+                                         <div class="form-group">
+                                             <label>Linkedin</label>
+                                             <div class="input-group">
+                                             <span class="input-group-addon"><i class="fa fa-linkedin"></i></span>
+                                             {{ form.linkedin|add_error_class:"class:alert alert-danger"  }}
+                                             </div>
+                                        </div>
+                                         <div class="form-group">
+                                             <label>You Tube</label>
+                                             <div class="input-group">
+                                             <span class="input-group-addon"><i class="fa fa-youtube"></i></span>
+                                             {{ form.you_tube|add_error_class:"class:alert alert-danger"  }}
+                                             </div>
+                                        </div>
+                                         <div class="form-group">
+                                             <label>Imagen</label>
+                                           {{ form.image|add_error_class:"class:alert alert-danger"  }}
+                                        </div>
+                                        
+                                                                       
+                                    </div><!-- /.box-body -->
+                                     <div class="box-footer">
+                                        <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o"></i> Guardar</button>
+                                        </div>
+                                </form>
+                            </div>
+                      
+                        </div><!-- ./col -->
+                </div>
+                   
+                </section><!-- /.content -->
+            </aside><!-- /.right-side -->
+
+{% endblock %}

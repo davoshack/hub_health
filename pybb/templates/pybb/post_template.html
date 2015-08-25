@@ -1,0 +1,49 @@
+{% load url from future %}
+{% load i18n pybb_tags %}
+{% load static from staticfiles %}
+{% pybb_get_profile user=post.user as post_user_profile %}
+{% pybb_get_profile user=user as user_profile %}
+         <div class="item">
+         <div class="user-panel">
+         <div class="pull-left image">
+                                        <img src={{ post_user_profile.get_image.url }} alt="user image" class="img-circle">
+                                        </div>
+                                        </div>
+                                        <p class="message">
+                                            <a href="#" class="name" name="post-{{ post.id }}">
+                                            <div class="post-related">
+                {% if user|pybb_may_create_post:post.topic %}
+                <a href="{% url 'pybb:add_post' topic.id %}?quote_id={{ post.id }}" class="quote-link"><span class="label label-info">{% trans "quote" %}</span></a>
+                    
+                  
+                {% endif %}
+                </div>      
+                                                <small class="text-muted pull-right"><a class="permalink" href="{{ post.get_absolute_url }}"># <i class="fa fa-clock-o"></i></a>
+                                            <span class="updated">{% pybb_time post.created %}</span></small>
+
+                                                 
+
+            <div class="post-author">
+                <a href="{{ post_user_profile.get_absolute_url }}">
+                    <span class="post-username">{{ post_user_profile.get_display_name }}</span>
+                </a>
+            </div>
+                                            </a>
+                   <div class="well well-lg">{{ post.body_html|safe }}</div>  
+
+
+            {% if not user.is_authenticated or user_profile.show_signatures %}
+                {% if post_user_profile.signature %}
+                    <div class="post-signature">
+                        {{ post_user_profile.signature_html|safe }}
+                    </div>
+                {% endif %}
+            {% endif %}
+            {% if post.updated %}
+                <div class="updated-message">{% trans "Edited" %} {% pybb_time post.updated %}</div>
+            {% endif %}
+
+           
+             
+                                    
+    </div><!-- /.item -->

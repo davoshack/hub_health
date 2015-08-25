@@ -1,0 +1,148 @@
+{% extends "admin.html" %}
+
+{% block title %}
+Directorio
+{% endblock %}
+
+{% block content %}
+{% load widget_tweaks %}
+{% load static from staticfiles %}
+<!-- Right side column. Contains the navbar and content of the page -->
+<aside class="right-side">                
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Directorio
+      <small>especialidad médica</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-arrow-circle-right"></i> Directorio</a></li>
+      <li class="active">especialidad médica</li>
+    </ol>
+  </section>
+   <!-- Main content -->
+  <section class="content">
+              {% if messages %}
+                    {% for message in messages %}
+                   
+                    <div {% if message.tags == "success" %} class="alert alert-success alert-dismissable" {% endif %}>
+                                        <i class="fa fa-thumbs-o-up"></i>
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                        </b> {{message}}
+                                    </div>
+                    {% endfor %}
+                    {% endif %}
+
+  <br>
+  <div class="row">
+  <div class="col-md-3">
+  <ul class="nav nav-pills">
+  <li><a href={% url 'search_directory_contacts' %}>Contactos</a></li>
+  <li class="active"><a href={% url 'search_directory_all' %}>Todos</a></li>
+  </ul>
+  </div>
+  </div>
+
+<br>
+<div class="row">
+  <div class="col-md-5">
+  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingThree">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Filtrar por especialidades
+        </a>
+      </h4>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+      <div class="panel-body">
+        {% for specialty in specialty_medical %}
+
+      <a href={% url 'search_filter_specialtymedical' specialty.id %}><button class="btn bg-navy btn-flat margin">{{specialty.name}}</button></a>
+
+  {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+    <!-- title row -->
+    <div class="row"> 
+      <br>  
+
+      <div class="col-md-5">
+       
+      {% if directory %}
+        <div class="scroll-area" data-spy="scroll" data-target="#myNavbar" data-offset="0">
+<br>
+      
+<div class="box-body table-responsive">
+                                    <div id="example2_wrapper" class="dataTables_wrapper form-inline" role="grid"><div class="row"><div class="col-xs-6"></div><div class="col-xs-6"></div></div>
+                                      <table aria-describedby="example2_info" id="example2" class="table table-bordered table-hover dataTable">
+                                   
+                                        
+                                        <tbody aria-relevant="all" aria-live="polite" role="alert">
+                                         {% for members in directory %}
+                                         {% if not members.user.is_staff  %} <!-- Para evitar que el usuario davos aparezca en la lista-->
+                                         {% if  members.user.is_active  %} <!-- Para evitar que el usuario davos aparezca en la lista-->
+                                         {% if user.id != members.user.id %}
+                                            <tr class="odd">
+                                                <td class="  sorting_1"> 
+                                                <div class="user-panel">
+                        <div class="pull-left image">
+                          
+                              <img src={{members.user.profileuser.image.url}} class="img-circle" alt="User Image" />
+                          
+                         </div>
+                        <div class="pull-left info">
+                            <p>{{members.user.last_name}}, {{members.user.first_name}}</p>
+                            {% if members.user.registrationprofile.tipo_usuario == 'medico' %}
+                            <p class="label label-info">Especialista</p>
+                            <p class="label label-success">{{members.user.profileuser.medical_specialty.name}}</p>
+                            {% else %}
+                            <p class="label label-info">Paciente</p>
+                            {% endif %}
+                                                      
+                        </div>
+                    </div>
+                                                {% if members.user.registrationprofile.tipo_usuario == 'medico' %}
+                                                <td class=" "><a href={% url 'specialist_profile' members.user.id %}><h3><p class="label label-success"><i class="fa fa-eye"></i> Ver perfil</p></h3></a></td>
+                                                {% else %}
+                                                <td class=" "><a href={% url 'patient_profile_public' members.user.id %}><h3><p class="label label-success"><i class="fa fa-eye"></i> Ver perfil</p></h3></a></td>
+                                                {% endif %}
+                                                 
+                                            </tr>
+                                              {% endif %}
+                                            {% endif %}
+                                          {% endif %}
+                                         {% endfor %}
+                                                    
+                                        </tbody>
+                                        </table>
+                                      </div>
+                                      
+      </div>
+      </div>
+      {% else %}
+         <div class="alert alert-info alert-dismissable">
+                                        
+                                        <b> ¡No hay resultados! </b>
+                                                                               
+                                    </div>
+      {% endif %}
+
+        
+</div>
+
+</div>
+
+</section><!-- /.content -->
+</aside><!-- /.right-side -->
+
+{% endblock %}
+<script>
+$('body').scrollspy({ target: '#navbar-example' })
+</script>

@@ -1,0 +1,107 @@
+{% extends "admin.html" %}
+
+{% block title %}
+ Perfil - Configuración de privacidad
+{% endblock %}
+
+{% block content %}
+{% load widget_tweaks %}
+<!-- Right side column. Contains the navbar and content of the page -->
+            <aside class="right-side">                
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        Perfil
+                        <small>configuración de privacidad</small>
+                    </h1>
+                    
+                    <ol class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-user-plus"></i> Configuración de privacidad</a></li>
+      
+                        <li class="active">editar</li>
+                    </ol>
+                </section>
+
+                <!-- Main content -->
+                <section class="content">
+                {% if messages %}
+                    {% for message in messages %}
+                   
+                    <div {% if message.tags == "success" %} class="alert alert-success alert-dismissable" {% endif %}>
+                                        <i class="fa fa-thumbs-o-up"></i>
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                        </b> {{message}}
+                                    </div>
+                    {% endfor %}
+                    {% endif %}
+               <div class="row">
+                          <div class="col-md-3">
+                            <div class="box box-primary">
+                                <div class="box-header">
+                                    <h3 class="box-title">Configuración de Privacidad</h3>
+
+                                </div><!-- /.box-header -->
+                                <!-- form start -->
+                                <form enctype="multipart/form-data" method="post" class="form-register" role="form">{% csrf_token %}
+                                    <div class="box-body">
+                                     {% if type_user == 'medico' %}
+                                      <div class="alert alert-info alert-dismissable">
+                                       <i class="fa fa-edit"></i>
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                        <b> Configuración para los clubes </b>
+                                       
+                                    </div>
+                                         <div class="form-group">
+                                             <label>Deseo ofrecer asesoría online:</label>
+                                          <p>{{form.medical_consultation}}</p>
+                                         </div>   
+                                    {% else %}
+                                     <div class="alert alert-info alert-dismissable">
+                                       <i class="fa fa-edit"></i>
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                        <b>Configuración para el perfil público</b>
+                                    </div>
+                                         <div class="form-group">
+                                             <label>Mostrar grupo sanguíneo:</label>
+                                           <p>{{form.flag_blood}}</p>
+                                         </div>  
+                                         <div class="form-group">
+                                             <label>Mostrar edad:</label>
+                                          <p> {{form.flag_date_birth}}</p>
+                                         </div>  
+                                         <div class="form-group">
+                                             <label>Mostrar resumen médico:</label>
+                                          <p> {{form.flag_patient_abstract}}</p>
+                                         </div>  
+                                         <div class="form-group">
+                                             <label>Mostrar nacionalidad:</label>
+                                          <p> {{form.flag_nationality}}</p>
+                                         </div> 
+                                    <br>
+                                    <div class="alert alert-info alert-dismissable">
+                                       <i class="fa fa-edit"></i>
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                        <b>Configuración para los clubes</b>
+                                    </div>
+                                    <div class="form-group">
+                                             <label>Permitir recibo de mensajes:</label>
+                                          <p>{{form.flag_message}}</p>
+                                    </div> 
+
+
+                                    {% endif %}        
+                                                                       
+                                    </div><!-- /.box-body -->
+                                     <div class="box-footer">
+                                        <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o"></i> Guardar</button>
+                                     </div>
+                                </form>
+                            </div>
+                      
+                        </div><!-- ./col -->
+                </div>
+                   
+                </section><!-- /.content -->
+            </aside><!-- /.right-side -->
+
+{% endblock %}

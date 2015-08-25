@@ -1,0 +1,117 @@
+{% extends "admin.html" %}
+
+{% block title %}
+ Perfil - Paciente
+{% endblock %}
+
+{% block content %}
+{% load widget_tweaks %}
+{% load static from staticfiles %}
+<!-- Right side column. Contains the navbar and content of the page -->
+            <aside class="right-side">                
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        Perfil
+                        <small>datos personales</small>
+                        <small>paciente</small>
+                    </h1>
+                   
+                    <ol class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-arrow-circle-right"></i> Perfil</a></li>
+                        <li>datos personales</li>
+                        <li class="active">paciente</li>
+                    </ol>
+                </section>
+
+                <!-- Main content -->
+                <section class="content">
+                <section class="content invoice">                    
+                    <!-- title row -->
+                    <div class="row">
+                         <div class="col-md-3">
+                            <div class="box box-info">
+                               
+                                <div class="box-body">
+                            
+                        <a href="#" class="thumbnail">
+                           <img src={{avatar.url}} class="img-rounded" alt="User Image" />
+                        </a> 
+                          </div>
+                          </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="box box-info">
+                                <div class="box-header">
+                                    <i class="fa fa-user"></i>
+                                    <h3 class="box-title">Datos Personales</h3>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                
+                            {% if gender == 'Hombre' %}
+                            {% for usr in names %}
+                            <h3><span class="label label-info"><i class="fa fa-male"></i>  {{usr.first_name}} {{usr.last_name}}</span></h3>{% endfor %}
+                            {% else %}
+                            {% for usr in names %}
+                            <h3><span class="label label-info"><i class="fa fa-female"></i> {{usr.first_name}} {{usr.last_name}}</span></h3>
+                            {% endfor %}
+                            {% endif %}
+                            {% if flag_date_birth %}
+                            <h4><span class="label label-info">Edad: {{age}} años</span></h4>
+                            {% endif %}
+                            {% if flag_blood %}
+                            <h4><span class="label label-info">Grupo sanguíneo: {{blood}}</span></h4>
+                            {% endif %}
+                            {% if flag_nationality %}
+                            <h4><span class="label label-info">Nacionalidad: {{nationality}}</span></h4>
+                            {% endif %}
+                            {% if flag_patient_abstract %}
+                            <h4><span class="label label-info">Resumen médico: </span></h4>
+                            <p>
+                            <div class="well well-lg">{{patient_abstract}}</div>
+                            
+                            {% endif %}
+                             
+                                  <br>
+                            <div class="text-center">
+                            <a class="btn btn-social-icon btn-facebook" href="http://{{facebook}}" target="_blank"><i class="fa fa-facebook"></i></a>
+                            <a class="btn btn-social-icon btn-twitter" href="http://{{twitter}}" target="_blank"><i class="fa fa-twitter"></i></a>
+                            <a class="btn btn-social-icon btn-linkedin" href="http://{{linkedin}}" target="_blank"><i class="fa fa-linkedin"></i></a>
+                            <a class="btn btn-social-icon btn-google-plus" href="http://{{youtube}}" target="_blank"><i class="fa fa-youtube"></i></a>
+                            </div>
+                            <br></br>
+                      
+                               
+                                </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+                        </div>
+                          <div class="col-md-3">
+                            <div class="box box-info">
+                                   <div class="box-header">
+                                    <i class="fa fa-medkit"></i>
+                                    <h3 class="box-title">Clubes</h3>
+                           
+                                  
+                                </div><!-- /.box-header -->
+                                 <div class="box-body">
+                                
+                                 {% for clubs in clubs %}
+                               
+                               <h3><span class="label label-info">{{clubs}}</span></h3>
+                           
+                                
+                
+                                 {% endfor %}
+                                
+                                 </div>
+                            </div>
+                            </div>
+                    </div>
+                    <br>
+                                   
+                </section>
+                   
+                </section><!-- /.content -->
+            </aside><!-- /.right-side -->
+
+{% endblock %}

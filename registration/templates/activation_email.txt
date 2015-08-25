@@ -1,0 +1,6 @@
+{% load i18n %}
+{% trans "Por favor confirme su correo ingresando al link adjunto" %}:
+
+http://{{ site.domain }}{% url 'registration_activate' activation_key %}
+
+{% blocktrans %}Este link es válido por  {{ expiration_days }} días.{% endblocktrans %}

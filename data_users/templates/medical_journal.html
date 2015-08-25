@@ -1,0 +1,664 @@
+{% extends "admin.html" %}
+
+{% block title %}
+ Perfil - Diario Médico
+{% endblock %}
+
+{% block content %}
+{% load widget_tweaks %}
+{% load static from staticfiles %}
+                  <aside class="right-side">                
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        Perfil
+                        <small>diario médico</small>
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-home"></i> Perfil</a></li>
+                        <li>diario médico</li>
+                        <li class="active">todo</li>
+                    </ol>
+                </section>
+
+                <!-- Main content -->
+                <section class="content">
+                <div role="tabpanel">
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#variables" aria-controls="variables" role="tab" data-toggle="tab">Variables médicas</a></li>
+    <li role="presentation"><a href="#estados" aria-controls="estados" role="tab" data-toggle="tab">Estados de ánimo</a></li>
+    <li role="presentation"><a href="#sintomas" aria-controls="sintomas" role="tab" data-toggle="tab">Síntomas</a></li>
+    {% if sex == 'Mujer' %}
+    <li role="presentation"><a href="#gineco" aria-controls="gineco" role="tab" data-toggle="tab">Variables ginecológicas</a></li>
+    {% endif %}
+    <!--
+    <li role="presentation"><a href="#rutinas" aria-controls="rutinas" role="tab" data-toggle="tab">Rutinas de salud</a></li>
+    <li role="presentation"><a href="#resultados" aria-controls="resultados" role="tab" data-toggle="tab">Resultados médicos</a></li>
+    <li role="presentation"><a href="#citas" aria-controls="citas" role="tab" data-toggle="tab">Citas</a></li>-->
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="variables">
+    <br>          
+                 <div class="row">
+                          <div class="col-md-4">
+                            <div class="box box-info">
+                                <div class="box-header">
+                                  
+                                     <div class="box-tools pull-right">
+                                      <div class="btn-group">
+                                            <button type="button" class="btn btn-primary">Acción</button>
+                                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                <span class="caret"></span>
+                                                <span class="sr-only">Toggle Dropdown</span>
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a href={% url 'account_create_glycemia' %}>Adicionar</a></li>
+                                                <li><a href={% url 'account_glycemia' %}>Ver todo</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                      <div class="small-box bg-aqua">
+                                <div class="inner">
+                                    <h3>
+                                        Glicemia
+                                    </h3>
+                                    <p>
+                                       <h5> Medición(mg/dL): <label>{{measurement}}</label> Contexto: <label>{{context}}</label> Tipo: <label>{{blood_type}}</label></h5>   
+                                    </p>
+                                     
+                                     <p>
+                                        {{timestamp_glycemia}}
+                                    </p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fa fa-user"></i>
+                                </div>
+                                
+                               <a href={% url 'graphic_glycemia' %} class="small-box-footer">
+                                    Ver gráfica <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                                </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+                        </div> 
+                        <div class="col-md-4">
+                           
+                            <div class="box box-info">
+                                <div class="box-header">
+                                  
+                                     <div class="box-tools pull-right">
+                                      <div class="btn-group">
+                                            <button type="button" class="btn btn-primary">Acción</button>
+                                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                <span class="caret"></span>
+                                                <span class="sr-only">Toggle Dropdown</span>
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a href={% url 'account_create_colesterol' %}>Adicionar</a></li>
+                                                <li><a href={% url 'account_colesterol' %}>Ver todo</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                      <div class="small-box bg-aqua">
+                                <div class="inner">
+                                    <h3>
+                                        Perfil lipídico
+                                    </h3>
+                                    <p>
+                                       <h5> LDL(mg/dL): <label>{{ldl}}</label>
+                                            HDL(mg/dL): <label>{{hdl}}</label> 
+                                            Triglicéridos: <label>{{triglyceredis}}</label>
+                                            Colesterol Total: <label>{{total_colesterol}}</label>
+                                        </h5>   
+                                    </p>
+                                     
+                                     <p>
+                                        {{timestamp_colesterol}}
+                                    </p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fa fa-user"></i>
+                                </div>
+                                <a href={% url 'graphic_profile_lipids' %} class="small-box-footer">
+                                    Ver gráfica <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                                </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+                           
+                        </div> 
+                            <div class="col-md-4">
+                            <div class="box box-info">
+                                <div class="box-header">
+                                  
+                                     <div class="box-tools pull-right">
+                                      <div class="btn-group">
+                                            <button type="button" class="btn btn-primary">Acción</button>
+                                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                <span class="caret"></span>
+                                                <span class="sr-only">Toggle Dropdown</span>
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a href={% url 'account_create_blood_pressure' %}>Adicionar</a></li>
+                                                <li><a href={% url 'account_blood_pressure' %}>Ver todo</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                <div class="small-box bg-aqua">
+                                <div class="inner">
+                                    <h3>
+                                        Presión arterial
+                                    </h3>
+                                    <p>
+                                        <h5> Sistólica(mm/Hg): <label>{{systolic}}</label>
+                                            Diastólica(mm/Hg): <label>{{diastolic}}</label> 
+                                            Latidos por minuto: <label>{{bpm}}</label>
+                                            Estado: <label>{{beat_status}}</label>
+                                        </h5>  
+                                    </p>
+                                    <p>
+                                        {{timestamp_pressure}}
+                                    </p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fa fa-user"></i>
+                                </div>
+                                <a href={% url 'graphic_blood_pressure' %} class="small-box-footer">
+                                    Ver gráfica <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                                </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+                        </div>
+                    </div><!-- /.row --> 
+                    <div class="row">
+                               <div class="col-md-4">
+                            <div class="box box-info">
+                                <div class="box-header">
+                                  
+                                     <div class="box-tools pull-right">
+                                      <div class="btn-group">
+                                            <button type="button" class="btn btn-primary">Acción</button>
+                                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                <span class="caret"></span>
+                                                <span class="sr-only">Toggle Dropdown</span>
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a href={% url 'account_create_weight' %}>Adicionar</a></li>
+                                                <li><a href={% url 'account_weight' %}>Ver todo</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                <div class="small-box bg-aqua">
+                                <div class="inner">
+                                    <h3>
+                                        Peso
+                                    </h3>
+                                        <h5> 
+                                           Peso(Kg): <label>{{weight}}</label>
+                                               
+                                        </h5>  
+                                    <p>
+                                        {{timestamp_weight}}
+                                    </p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fa fa-user"></i>
+                                </div>
+                                <a href={% url 'graphic_profile_weight' %} class="small-box-footer">
+                                    Ver gráfica <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                                </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+                        </div>
+                        <div class="col-md-4">
+                            <div class="box box-info">
+                                <div class="box-header">
+                                  
+                                     <div class="box-tools pull-right">
+                                      <div class="btn-group">
+                                            <button type="button" class="btn btn-primary">Acción</button>
+                                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                <span class="caret"></span>
+                                                <span class="sr-only">Toggle Dropdown</span>
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a href={% url 'account_create_size' %}>Adicionar</a></li>
+                                                <li><a href={% url 'account_size' %}>Ver todo</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                <div class="small-box bg-aqua">
+                                <div class="inner">
+                                    <h3>
+                                        Talla
+                                    </h3>
+                                    <p>
+                                       <h5> 
+                                           Talla(Cm): <label>{{size}}</label>
+                                               
+                                        </h5>  
+                                    </p>
+                                    <p>
+                                        {{timestamp_size}}
+                                    </p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fa fa-user"></i>
+                                </div>
+                                <a href={% url 'graphic_profile_size' %} class="small-box-footer">
+                                    Ver gráfica <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                                </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+                        </div>
+                            <div class="col-md-4">
+                            <div class="box box-info">
+                                <div class="box-header">
+                                  
+                                     <div class="box-tools pull-right">
+                                      <div class="btn-group">
+                                            <button type="button" class="btn btn-primary">Acción</button>
+                                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                <span class="caret"></span>
+                                                <span class="sr-only">Toggle Dropdown</span>
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a href={% url 'account_create_hemoglobin' %}>Adicionar</a></li>
+                                                <li><a href={% url 'account_hemoglobin' %}>Ver todo</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                <div class="small-box bg-aqua">
+                                <div class="inner">
+                                    <h3>
+                                        Hemoglobina
+                                    </h3>
+                                    <p>
+                                       <h5> 
+                                           Porcentaje(%): <label>{{percent}}</label>
+                                               
+                                        </h5>  
+                                    </p>
+                                    <p>
+                                        {{timestamp_hemoglobin}}
+                                    </p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fa fa-user"></i>
+                                </div>
+                                <a href={% url 'graphic_profile_hemoglobin' %} class="small-box-footer">
+                                    Ver gráfica <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                                </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+                        </div>
+                    </div>
+                    </div>
+    <div role="tabpanel" class="tab-pane" id="estados">
+    <br> 
+    <div class="row">
+                   <div class="col-md-4">
+                            <div class="box box-info">
+                                <div class="box-header">
+                                  
+                                     <div class="box-tools pull-right">
+                                      <div class="btn-group">
+                                            <button type="button" class="btn btn-primary">Acción</button>
+                                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                <span class="caret"></span>
+                                                <span class="sr-only">Toggle Dropdown</span>
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a href={% url 'account_create_emotionalstates' %}>Adicionar</a></li>
+                                                <li><a href={% url 'account_emotionalstates' %}>Ver todo</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                      <div class="small-box bg-aqua">
+                                <div class="inner">
+                                    <h3>
+                                        Estado de ánimo
+                                    </h3>
+                                     <p>
+                                       <h5> 
+                                           Puntuación: <label>{{state}}</label>
+                                               
+                                        </h5>  
+                                    </p>
+                                    <p>
+                                        {{timestamp_emotionalstates}}
+                                    </p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fa fa-user"></i>
+                                </div>
+
+                                <a href={% url 'graphic_emotionalstate' %} class="small-box-footer">
+                                    Ver gráfica <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                                </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+                        </div> 
+                </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="sintomas">  
+     <br> 
+    <div class="row">
+                   <div class="col-md-5">
+                            <div class="box box-info">
+                                <div class="box-header">
+                                  
+                                     <div class="box-tools pull-right">
+                                      <div class="btn-group">
+                                            <button type="button" class="btn btn-primary">Acción</button>
+                                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                <span class="caret"></span>
+                                                <span class="sr-only">Toggle Dropdown</span>
+                                            </button>
+                                           <ul class="dropdown-menu" role="menu">
+                                                <li><a href={% url 'account_create_generalsymptoms' %}>Adicionar</a></li>
+                                                <li><a href={% url 'account_generalsymptoms' %}>Ver todo</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                      <div class="small-box bg-aqua">
+                                <div class="inner">
+                                    <h3>
+                                        Síntomas Generales
+                                    </h3>
+                                    <p>
+                                        Síntoma: <label>{{general_symptoms}}</label>
+                                    </p>
+                                     
+                                     <p>
+                                        {{timestamp_general_symptoms}}
+                                    </p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fa fa-user"></i>
+                                </div>
+                                <a href={% url 'graphic_generalsymptoms' %} class="small-box-footer">
+                                    Ver gráfica <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                                </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+                        </div> 
+                                           <div class="col-md-5">
+                            <div class="box box-info">
+                                <div class="box-header">
+                                  
+                                     <div class="box-tools pull-right">
+                                      <div class="btn-group">
+                                            <button type="button" class="btn btn-primary">Acción</button>
+                                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                <span class="caret"></span>
+                                                <span class="sr-only">Toggle Dropdown</span>
+                                            </button>
+                                             <ul class="dropdown-menu" role="menu">
+                                                <li><a href={% url 'account_create_glycemicsymptoms' %}>Adicionar</a></li>
+                                                <li><a href={% url 'account_glycemicsymptoms' %}>Ver todo</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                      <div class="small-box bg-aqua">
+                                <div class="inner">
+                                    <h3>
+                                        Síntomas Glicémicos
+                                    </h3>
+                                    <p>
+                                        Síntoma: <label>{{glycemic_symptoms}}</label>
+                                    </p>
+                                     
+                                     <p>
+                                        {{timestamp_glycemic_symptoms}}
+                                    </p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fa fa-user"></i>
+                                </div>
+                               <a href={% url 'graphic_glycemicsymptoms' %} class="small-box-footer">
+                                    Ver gráfica <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                                </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+                        </div> 
+                </div>
+            </div>
+    <div role="tabpanel" class="tab-pane" id="gineco">
+            <br> 
+    <div class="row">
+                   <div class="col-md-5">
+                            <div class="box box-info">
+                                <div class="box-header">
+                                  
+                                     <div class="box-tools pull-right">
+                                      <div class="btn-group">
+                                            <button type="button" class="btn btn-primary">Acción</button>
+                                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                <span class="caret"></span>
+                                                <span class="sr-only">Toggle Dropdown</span>
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a href={% url 'account_create_gyneco' %}>Adicionar</a></li>
+                                                <li><a href={% url 'account_gyneco' %}>Ver todo</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                      <div class="small-box bg-aqua">
+                                <div class="inner">
+                                    <h3>
+                                        Ginecológico
+                                    </h3>
+                                    <p>
+                                        Tipo: <label>{{menstrual_cycles}}</label>
+                                    </p>
+                                    <p>
+                                        Duración: <label>{{cycles_duration}}</label>
+                                    </p>
+                                    <p>
+                                        Anticonceptivo: <label>{{type_contraception}}</label>
+                                    </p>
+                                    <p>
+                                        Tiempo : <label>{{usage_time}}</label>
+                                    </p>
+                                     
+                                     <p>
+                                        12/01/2015
+                                    </p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fa fa-user"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">
+                                    Ver gráfica <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                                </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+                
+                </div>
+    </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="rutinas">
+                    <br> 
+    <div class="row">
+                   <div class="col-md-5">
+                            <div class="box box-info">
+                                <div class="box-header">
+                                  
+                                     <div class="box-tools pull-right">
+                                      <div class="btn-group">
+                                            <button type="button" class="btn btn-primary">Acción</button>
+                                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                <span class="caret"></span>
+                                                <span class="sr-only">Toggle Dropdown</span>
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a href={% url 'account_create_gyneco' %}>Adicionar</a></li>
+                                                <li><a href={% url 'account_gyneco' %}>Ver todo</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                      <div class="small-box bg-aqua">
+                                <div class="inner">
+                                    <h3>
+                                        Rutinas
+                                    </h3>
+                                    <p>
+                                        Alimentación
+                                    </p>
+                                     
+                                     <p>
+                                        12/01/2015
+                                    </p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fa fa-user"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">
+                                    Ver gráfica <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                                </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+                
+                </div>
+    </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="resultados">
+                    <br> 
+    <div class="row">
+                   <div class="col-md-5">
+                            <div class="box box-info">
+                                <div class="box-header">
+                                  
+                                     <div class="box-tools pull-right">
+                                      <div class="btn-group">
+                                            <button type="button" class="btn btn-primary">Acción</button>
+                                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                <span class="caret"></span>
+                                                <span class="sr-only">Toggle Dropdown</span>
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a href="#">Adicionar</a></li>
+                                                <li><a href="#">Ver todo</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                      <div class="small-box bg-aqua">
+                                <div class="inner">
+                                    <h3>
+                                        Resultados
+                                    </h3>
+                                    <p>
+                                        Resultado
+                                    </p>
+                                     
+                                     <p>
+                                        12/01/2015
+                                    </p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fa fa-user"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">
+                                    Ver gráfica <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                                </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+                
+                </div>
+    </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="citas">
+                            <br> 
+    <div class="row">
+                   <div class="col-md-5">
+                            <div class="box box-info">
+                                <div class="box-header">
+                                  
+                                     <div class="box-tools pull-right">
+                                      <div class="btn-group">
+                                            <button type="button" class="btn btn-primary">Acción</button>
+                                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                <span class="caret"></span>
+                                                <span class="sr-only">Toggle Dropdown</span>
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a href="#">Adicionar</a></li>
+                                                <li><a href="#">Ver todo</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                      <div class="small-box bg-aqua">
+                                <div class="inner">
+                                    <h3>
+                                        Citas médicas
+                                    </h3>
+                                    <p>
+                                        Cita
+                                    </p>
+                                     
+                                     <p>
+                                        12/01/2015
+                                    </p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fa fa-user"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">
+                                    Ver gráfica <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                                </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+                
+                </div>
+    </div>
+    </div>
+  </div>
+
+</div>
+               
+  
+                </section><!-- /.content -->
+            </aside><!-- /.right-side -->
+{% endblock %}

@@ -1,0 +1,266 @@
+{% extends "admin.html" %}
+
+{% block title %}
+ Perfil
+{% endblock %}
+
+{% block content %}
+{% load widget_tweaks %}
+{% load static from staticfiles %}
+<!-- Right side column. Contains the navbar and content of the page -->
+            <aside class="right-side">                
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        Perfil
+                        <small>datos personales</small>
+                    </h1>
+                   
+                    <ol class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-arrow-circle-right"></i> Perfil</a></li>
+                        <li class="active">datos personales</li>
+                    </ol>
+                </section>
+
+                <!-- Main content -->
+                <section class="content">
+                 {% if messages %}
+                    {% for message in messages %}
+                   
+                    <div {% if message.tags == "success" %} class="alert alert-success alert-dismissable" {% endif %}>
+                                        <i class="fa fa-thumbs-o-up"></i>
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                        </b> {{message}}
+                                    </div>
+                    {% endfor %}
+                    {% endif %}
+                <section class="content invoice">                    
+                    <!-- title row -->
+                    <div class="row">
+                         <div class="col-md-3">
+                            <div class="box box-info">
+                               
+                                <div class="box-body">
+                              
+                    
+                        <a href="#" class="thumbnail">
+                           <img src={{image.url}} class="img-rounded" alt="User Image" />
+                        </a>      
+                         
+                          </div>
+                          </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="box box-info">
+                                <div class="box-header">
+                                    <i class="fa fa-user"></i>
+                                    <h3 class="box-title">Datos Personales</h3>
+                                    <div class="box-tools pull-right">
+                                       <a href={% url 'account_edit_profile' %}> <button class="btn btn-primary "><i class="fa fa-edit"></i> Editar</button></a>
+                                    </div>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                            {% if type_user == 'medico' %}
+                            <a href={% url 'specialist_profile_public' user.id %} target="_blank"><h3><span class="label label-primary"><i class="fa fa-external-link-square"></i> Perfil público </span></h3></a>
+                            {% else %}
+                             <a href={% url 'account_medical_journal' %}><h3><span class="label label-primary"><i class="fa fa-calendar"></i> Editar diario médico </span></h3></a>
+                            {% endif %} 
+                            {% if gender == 'Hombre' %}
+                            <h3><span class="label label-info"><i class="fa fa-male"></i>  {{user.first_name}} {{user.last_name}}</span></h3>
+                            {% else %}
+                            <h3><span class="label label-info"><i class="fa fa-female"></i> {{user.first_name}} {{user.last_name}}</span></h3>
+                            {% endif %}
+                            {% if type_user == 'paciente' %}
+                            <h4><span class="label label-info">Edad: {{age}} años</span></h4>
+                            <h4><span class="label label-info">Grupo sanguíneo: {{blood}}</span></h4>
+                            <h4><span class="label label-info">Nacionalidad: {{nationality}}</span></h4>
+                            <h4><span class="label label-info">Resumen médico: </span></h4>
+                            <p>
+                            <div class="well well-lg">{{patient_abstract}}</div>
+                            <div class="text-center">
+                            <a class="btn btn-social-icon btn-facebook" href="http://{{facebook}}" target="_blank"><i class="fa fa-facebook"></i></a>
+                            <a class="btn btn-social-icon btn-twitter" href="http://{{twitter}}" target="_blank"><i class="fa fa-twitter"></i></a>
+                            <a class="btn btn-social-icon btn-linkedin" href="http://{{linkedin}}" target="_blank"><i class="fa fa-linkedin"></i></a>
+                            <a class="btn btn-social-icon btn-google-plus" href="http://{{youtube}}" target="_blank"><i class="fa fa-youtube"></i></a>
+                            </div>
+                            <br></br>
+                            {% else %}
+                            <h4><span class="label label-info">Nacionalidad: {{nationality}}</span></h4>
+                            <h4><span class="label label-info">Especialidad: {{medical_specialty}}</span></h4>
+                            <h4><span class="label label-info">Énfasis médico: {{medical_emphasis}}</span></h4>
+                            <h4><span class="label label-info">Extracto profesional: </span></h4>
+                            <p>
+                            <div class="well well-lg">{{professional_abstract}}</div>
+                            <div class="text-center">
+                            <a class="btn btn-social-icon btn-facebook" href="http://{{facebook}}" target="_blank"><i class="fa fa-facebook"></i></a>
+                            <a class="btn btn-social-icon btn-twitter" href="http://{{twitter}}" target="_blank"><i class="fa fa-twitter"></i></a>
+                            <a class="btn btn-social-icon btn-linkedin" href="http://{{linkedin}}" target="_blank"><i class="fa fa-linkedin"></i></a>
+                            <a class="btn btn-social-icon btn-google-plus" href="http://{{youtube}}" target="_blank"><i class="fa fa-youtube"></i></a>
+                            </div>
+               
+                            <br></br>
+                            {% endif %}
+                               
+                                </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+                        </div>
+                        {% if type_user == 'medico' %}
+                          <div class="col-md-4">
+                            <div class="box box-info">
+                                   <div class="box-header">
+                                    <i class="fa fa-key"></i>
+                                    <h3 class="box-title">Configuración de Privacidad</h3>
+                             <div class="box-tools pull-right">
+                                 
+                                    <a href={% url 'account_edit_privacy_settings' %}> <button class="btn btn-primary "><i class="fa fa-edit"></i> Editar</button></a> 
+                             
+                              </div>
+                                  
+                                </div>
+                                 <div class="box-body">
+                                  <div class="alert alert-info">
+                                   <b>Clubes</b>
+                            {% if medical_consultation %}
+                               <h4><span class="label label-info">Asesoría online <i class="fa fa-check-circle"></i></span></h4>
+                            {% else %}  
+                               <h4><span class="label label-default">Asesoría online <i class="fa fa-times-circle"></i></span></h4> 
+                            {% endif %}
+                                       
+                                       
+                                    </div>
+                           
+                                 </div>
+                               
+                            </div>
+                            </div>
+                        {% endif %}
+                        {% if type_user == 'paciente' %}
+                          <div class="col-md-4">
+                            <div class="box box-info">
+                                   <div class="box-header">
+                                    <i class="fa fa-key"></i>
+                                    <h3 class="box-title">Configuración de Privacidad</h3>
+                             <div class="box-tools pull-right">
+                                 
+                                    <a href={% url 'account_edit_privacy_settings' %}> <button class="btn btn-primary "><i class="fa fa-edit"></i> Editar</button></a> 
+                             
+                              </div>
+                                  
+                                </div>
+                                 <div class="box-body">
+                                  <div class="alert alert-info ">
+                                  
+                                        <b>Perfil público</b>
+                             {% if flag_blood %}
+                               <h4><span class="label label-info">Grupo sanguíneo <i class="fa fa-check-circle"></i></span></h4>
+                             {% else %}  
+                               <h4><span class="label label-default">Grupo sanguíneo <i class="fa fa-times-circle"></i></span></h4> 
+                             {% endif %}
+
+                             {% if flag_date_birth %}
+                               <h4><span class="label label-info">Edad <i class="fa fa-check-circle"></i></span></h4>
+                             {% else %}  
+                               <h4><span class="label label-default">Edad <i class="fa fa-times-circle"></i></span></h4> 
+                             {% endif %}
+ 
+                             {% if flag_patient_abstract %}
+                               <h4><span class="label label-info">Resumen médico <i class="fa fa-check-circle"></i></span></h4>
+                             {% else %}  
+                               <h4><span class="label label-default">Resumen médico <i class="fa fa-times-circle"></i></span></h4> 
+                             {% endif %}
+                            
+
+                             {% if flag_nationality %}
+                               <h4><span class="label label-info">Nacionalidad <i class="fa fa-check-circle"></i></span></h4>
+                             {% else %}  
+                               <h4><span class="label label-default">Nacionalidad <i class="fa fa-times-circle"></i></span></h4> 
+                            {% endif %}
+                                    </div>
+                          
+
+                             <br>
+                       
+                                </div>
+
+                               
+                            </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <br>
+                    <!-- info row -->
+                            {% if type_user == 'medico' %}
+                    <div class="row">
+                    <div class="col-md-5">
+                            <div class="box box-info">
+                                <div class="box-header">
+                                    <i class="fa fa-certificate"></i>
+                                    <h3 class="box-title">Datos Profesionales</h3>
+                                     <div class="box-tools pull-right">
+                                       <a href={% url 'specialist_professional' %}> <button class="btn btn-primary "><i class="fa fa-edit"></i> Editar</button></a>
+                                    </div>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                    
+                                </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+                        </div>
+                            <div class="col-md-5">
+                            <div class="box box-info">
+                                <div class="box-header">
+                                    <i class="fa fa-mortar-board"></i>
+                                    <h3 class="box-title">Datos Académicos </h3>
+                                     <div class="box-tools pull-right">
+                                       <a href={% url 'specialist_academic' %}> <button class="btn btn-primary "><i class="fa fa-edit"></i> Editar</button></a>
+                                    </div>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                    
+                                </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+                        </div>
+                    </div><!-- /.row -->
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="box box-info">
+                                <div class="box-header">
+                                    <i class="fa fa-hospital-o"></i>
+                                    <h3 class="box-title">Datos Laborales </h3>
+                                     <div class="box-tools pull-right">
+                                       <a href={% url 'specialist_employmenthistory' %}> <button class="btn btn-primary "><i class="fa fa-edit"></i> Editar</button></a>
+                                    </div>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                    
+                                </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+                        </div>
+                           <div class="col-md-5">
+                            <div class="box box-info">
+                                <div class="box-header">
+                                    <i class="fa fa-list"></i>
+                                    <h3 class="box-title">Entradas blog </h3>
+                                     <div class="box-tools pull-right">
+                                       <a href={% url 'specialist_create_entry' %}> <button class="btn btn-primary "><i class="fa fa-edit"></i> Editar</button></a>
+                                    </div>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                    
+                                </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+                        </div>
+                    </div>
+                
+                     {% else %}
+                     {% endif %} 
+                
+                  
+                                    
+                </section>
+                   
+                </section><!-- /.content -->
+            </aside><!-- /.right-side -->
+
+{% endblock %}
+
+
