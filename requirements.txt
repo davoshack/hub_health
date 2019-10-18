@@ -50,6 +50,6 @@ simplejson==3.6.5
 six==1.9.0
 sorl-thumbnail==12.2
 static3==0.5.1
-urllib3==1.10.2
+urllib3==1.24.2
 wsgiref==0.1.2
 zinnia-wysiwyg-ckeditor==1.2
